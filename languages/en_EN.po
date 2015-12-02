@@ -1,0 +1,407 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: photolab\n"
+"POT-Creation-Date: 2015-05-17 16:10+0200\n"
+"PO-Revision-Date: 2015-05-17 16:11+0200\n"
+"Last-Translator: Duena <Duena@demomail.org>\n"
+"Language-Team: photolab <photolab@demomail.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;esc_attr_e;_e;_x\n"
+"X-Poedit-Basepath: ./\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../comments.php:26
+msgid "Comments on"
+msgstr ""
+
+#: ../comments.php:30 ../comments.php:47
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:31 ../comments.php:48
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:58
+msgid "Comments are closed."
+msgstr ""
+
+#: ../comments.php:63
+msgid "Comment*"
+msgstr ""
+
+#: ../comments.php:64
+msgid "Leave a Reply"
+msgstr ""
+
+#: ../comments.php:65
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../content-aside.php:31 ../content-image.php:29 ../content-link.php:23
+#: ../content-quote.php:31 ../content-video.php:28 ../content.php:43
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../content-aside.php:33 ../content-image.php:31 ../content-link.php:25
+#: ../content-page.php:16 ../content-quote.php:33 ../content-single.php:15
+#: ../content-video.php:30 ../content.php:45
+msgid "Pages:"
+msgstr ""
+
+#: ../content-none.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: ../content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: ../content-single.php:25 ../content-single.php:28
+msgid ", "
+msgstr ""
+
+#: ../footer.php:16
+msgid "http://wordpress.org/"
+msgstr ""
+
+#: ../footer.php:16
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: ../footer.php:18
+msgid "http://www.templatemonster.com/"
+msgstr ""
+
+#: ../footer.php:18
+#, php-format
+msgid "Theme %1$s designed by %2$s"
+msgstr ""
+
+#: ../functions.php:41
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:131
+msgid "Facebook"
+msgstr ""
+
+#: ../functions.php:135
+msgid "Twitter"
+msgstr ""
+
+#: ../functions.php:139
+msgid "Google+"
+msgstr ""
+
+#: ../functions.php:143
+msgid "Instagram"
+msgstr ""
+
+#: ../functions.php:147
+msgid "LinkedIn"
+msgstr ""
+
+#: ../functions.php:151
+msgid "Dribbble"
+msgstr ""
+
+#: ../functions.php:155
+msgid "YouTube"
+msgstr ""
+
+#: ../functions.php:179 ../functions.php:185
+msgid "on"
+msgstr ""
+
+#: ../functions.php:233
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:235
+msgid "Allowed only on static pages"
+msgstr ""
+
+#: ../functions.php:243
+msgid "Footer Widget Area"
+msgstr ""
+
+#: ../inc/custom-header.php:43
+msgid "Header slogan"
+msgstr ""
+
+#: ../inc/custom-header.php:46
+msgid ""
+"<em>Profesional Photographer</em>Hi! I am Linda Grey Johns. I live in NY."
+msgstr ""
+
+#: ../inc/customizer.php:48
+msgid "Header slogan text"
+msgstr ""
+
+#: ../inc/customizer.php:57
+msgid "Socials"
+msgstr ""
+
+#: ../inc/customizer.php:68
+msgid "Enable social links block"
+msgstr ""
+
+#: ../inc/customizer.php:82
+msgid "Show social links in:"
+msgstr ""
+
+#: ../inc/customizer.php:87
+msgid "Header"
+msgstr ""
+
+#: ../inc/customizer.php:88
+msgid "Footer"
+msgstr ""
+
+#: ../inc/customizer.php:105
+#, php-format
+msgid "%s url"
+msgstr ""
+
+#: ../inc/customizer.php:114
+msgid "Welcome Message"
+msgstr ""
+
+#: ../inc/customizer.php:125
+msgid "Welcome message label"
+msgstr ""
+
+#: ../inc/customizer.php:139
+msgid "Welcome message image"
+msgstr ""
+
+#: ../inc/customizer.php:152
+msgid "Welcome message title"
+msgstr ""
+
+#: ../inc/customizer.php:166
+msgid "Welcome message text"
+msgstr ""
+
+#: ../inc/customizer.php:174
+msgid "Misc"
+msgstr ""
+
+#: ../inc/customizer.php:180
+msgid "Featured"
+msgstr ""
+
+#: ../inc/customizer.php:185
+msgid "Featured Post Label"
+msgstr ""
+
+#: ../inc/customizer.php:194
+msgid "My Blog"
+msgstr ""
+
+#: ../inc/customizer.php:199
+msgid "Blog Label"
+msgstr ""
+
+#: ../inc/customizer.php:213
+msgid "Post content on blog page"
+msgstr ""
+
+#: ../inc/customizer.php:218
+msgid "Only Excerpt"
+msgstr ""
+
+#: ../inc/customizer.php:219
+msgid "Full Content"
+msgstr ""
+
+#: ../inc/customizer.php:231
+msgid "Featured image on blog page"
+msgstr ""
+
+#: ../inc/customizer.php:236
+msgid "Small"
+msgstr ""
+
+#: ../inc/customizer.php:237
+msgid "Fullwidth"
+msgstr ""
+
+#: ../inc/customizer.php:244 ../inc/template-tags.php:313
+msgid "Read More"
+msgstr ""
+
+#: ../inc/customizer.php:249
+msgid "Blog \"Read More\" button text"
+msgstr ""
+
+#: ../inc/extras.php:65
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../inc/extras.php:109 ../inc/extras.php:120
+msgid "Home"
+msgstr ""
+
+#: ../inc/template-tags.php:20 ../inc/template-tags.php:57
+msgid "&larr; Previous"
+msgstr ""
+
+#: ../inc/template-tags.php:21 ../inc/template-tags.php:58
+msgid "Next &rarr;"
+msgstr ""
+
+#: ../inc/template-tags.php:65
+msgid "Posts navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:101
+msgid "Prev post"
+msgstr ""
+
+#: ../inc/template-tags.php:120
+msgid "Next post"
+msgstr ""
+
+#: ../inc/template-tags.php:205
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:205
+msgid "Edit"
+msgstr ""
+
+#: ../inc/template-tags.php:219
+msgid "ago"
+msgstr ""
+
+#: ../inc/template-tags.php:223
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:254
+msgid "Name"
+msgstr ""
+
+#: ../inc/template-tags.php:255
+msgid "Email"
+msgstr ""
+
+#: ../inc/template-tags.php:256
+msgid "Website"
+msgstr ""
+
+#: ../inc/template-tags.php:532
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../inc/template-tags.php:537
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../inc/template-tags.php:542
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../inc/template-tags.php:542
+msgid "F Y"
+msgstr ""
+
+#: ../inc/template-tags.php:547
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../inc/template-tags.php:547
+msgid "Y"
+msgstr ""
+
+#: ../inc/template-tags.php:552
+msgid "Asides"
+msgstr ""
+
+#: ../inc/template-tags.php:557
+msgid "Galleries"
+msgstr ""
+
+#: ../inc/template-tags.php:562
+msgid "Images"
+msgstr ""
+
+#: ../inc/template-tags.php:567
+msgid "Videos"
+msgstr ""
+
+#: ../inc/template-tags.php:572
+msgid "Quotes"
+msgstr ""
+
+#: ../inc/template-tags.php:577
+msgid "Links"
+msgstr ""
+
+#: ../inc/template-tags.php:582
+msgid "Statuses"
+msgstr ""
+
+#: ../inc/template-tags.php:587
+msgid "Audios"
+msgstr ""
+
+#: ../inc/template-tags.php:592
+msgid "Chats"
+msgstr ""
+
+#: ../inc/template-tags.php:596
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../inc/template-tags.php:609
+msgid "Error 404"
+msgstr ""
+
+#: ../inc/template-tags.php:613 ../sidebar-footer.php:18 ../sidebar.php:16
+msgid "Archives"
+msgstr ""
+
+#: ../sidebar-footer.php:25 ../sidebar.php:23
+msgid "Meta"
+msgstr ""
