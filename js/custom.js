@@ -24,14 +24,19 @@ function getWindowHeight() {
     $(window).load(function() {
         if(!device.mobile() && !device.tablet() && !device.ipod()){
 
-            // sticky header
-            jQuery('.site-header').tmStickUp({
-                correctionSelector: jQuery('#wpadminbar'),   
-                active: true
-            });
+            if(photolab_custom.stickup_menu == '1')
+            {
+                // sticky header
+                jQuery('.site-header').tmStickUp({
+                    correctionSelector: jQuery('#wpadminbar'),   
+                    active: true
+                });
+            }
+            
 
             // pages and posts header image parallax
             $('.page-header-wrap').each(function(){
+                var coefficient = (photolab_custom.stickup_menu != '1') ? 6.3 : 1.7;
                 var $bgobj = $(this).find('img'),
                     window_height = parseInt(getWindowHeight()),
                     element_pos = $bgobj.offset(),
@@ -41,9 +46,9 @@ function getWindowHeight() {
                     visible_scroll = parseInt($(window).scrollTop()) - buffer;
                 if ( visible_scroll > 0 ) {
                     if ( window_height > element_top ) {
-                        var yPos = ($(window).scrollTop() / 1.7);
+                        var yPos = ($(window).scrollTop() / coefficient);
                     } else {
-                        var yPos = (visible_scroll / 1.7);
+                        var yPos = (visible_scroll / coefficient);
                     }
                     var coords = yPos + 'px';
                     $bgobj.css({ top: coords });
@@ -57,9 +62,9 @@ function getWindowHeight() {
                    
                     if ( visible_scroll > 0 ) {
                         if ( window_height > element_top ) {
-                            var yPos = ($(window).scrollTop() / 1.7);
+                            var yPos = ($(window).scrollTop() / coefficient);
                         } else {
-                            var yPos = (visible_scroll / 1.7);
+                            var yPos = (visible_scroll / coefficient);
                         }
                         var coords = yPos + 'px';
                         $bgobj.css({ top: coords });
@@ -69,6 +74,8 @@ function getWindowHeight() {
             
             // home page header image parallax
             $('.home .header-image-box img').each(function(){
+
+                var coefficient = (photolab_custom.stickup_menu != '1') ? 5.5 : 1.3;
                 var $bgobj = $(this),
                     window_height = parseInt(getWindowHeight()),
                     element_pos = $bgobj.offset(),
@@ -76,11 +83,17 @@ function getWindowHeight() {
                     //buffer = Math.floor(element_top / window_height);
                     buffer = Math.floor(element_top - window_height),
                     visible_scroll = parseInt($(window).scrollTop()) - buffer;
-                if ( visible_scroll > 0 ) {
-                    if ( window_height > element_top ) {
-                        var yPos = ($(window).scrollTop() / 1.3);
-                    } else {
-                        var yPos = (visible_scroll / 1.3);
+                    console.log('visible_scroll', visible_scroll);
+
+                if ( visible_scroll > 0) 
+                {
+                    if ( window_height > element_top ) 
+                    {
+                        var yPos = ($(window).scrollTop() / coefficient);
+                    } 
+                    else 
+                    {
+                        var yPos = (visible_scroll / coefficient);
                     }
                     //var coords = yPos + 'px';
                     $bgobj.css({
@@ -97,12 +110,13 @@ function getWindowHeight() {
                         //buffer = Math.floor(element_top / window_height);
                         buffer = Math.floor(element_top - window_height),
                         visible_scroll = parseInt($(window).scrollTop()) - buffer;
+                        console.log('visible_scroll', visible_scroll);
                    
-                    if ( visible_scroll > 0 ) {
+                    if ( visible_scroll > 0) {
                         if ( window_height > element_top ) {
-                            var yPos = ($(window).scrollTop() / 1.3);
+                            var yPos = ($(window).scrollTop() / coefficient);
                         } else {
-                            var yPos = (visible_scroll / 1.3);
+                            var yPos = (visible_scroll / coefficient);
                         }
                         //var coords = yPos + 'px';
                         $bgobj.css({

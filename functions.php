@@ -112,6 +112,12 @@ function photolab_assets() {
 	wp_enqueue_script( 'photolab-device', get_template_directory_uri() . '/js/device.min.js', array('jquery'), '1.0.2', true );
 	wp_enqueue_script( 'photolab-sticky', get_template_directory_uri() . '/js/jquery.stickyheader.js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'photolab-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1.0', true );
+	
+	wp_localize_script( 
+		'photolab-custom', 
+		'photolab_custom', 
+		array('stickup_menu' => get_option('sticky_menu')) 
+	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
