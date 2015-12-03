@@ -37,6 +37,7 @@ add_action( 'customize_register', 'photolab_add_customizer' );
 if(!function_exists('photolab_add_customizer')) {
 
 	function photolab_add_customizer( $wp_customize ) {
+		
 
 		/* Header slogan */
 		$wp_customize->add_setting( 'photolab_header_slogan', array(
@@ -78,36 +79,41 @@ if(!function_exists('photolab_add_customizer')) {
 			'priority' => 40
 		));
 
-		/* Enable socials */
-		$wp_customize->add_setting( 'photolab[enable_socials]', array(
+		/* Socials position */
+		$wp_customize->add_setting( 
+			'photolab_socials_position_header', 
+			array(
 				'default'           => '',
 				'type'              => 'option',
-				'sanitize_callback' => 'photolab_sanitize_checkbox'
-		) );
-		$wp_customize->add_control( 'photolab_enable_socials', array(
-				'label'    => __( 'Enable social links block', 'photolab' ),
-				'section'  => 'photolab_socials',
-				'settings' => 'photolab[enable_socials]',
-				'type'     => 'checkbox',
-				'std'      => '1'
-		) );
-
-		/* Socials position */
-		$wp_customize->add_setting( 'photolab[socials_position]', array(
-				'default'           => 'header',
+				'sanitize_callback' => 'photolab_sanitize_select'
+			) 
+		);
+		$wp_customize->add_setting( 
+			'photolab_socials_position_footer', 
+			array(
+				'default'           => '',
 				'type'              => 'option',
 				'sanitize_callback' => 'photolab_sanitize_select'
-		) );
-		$wp_customize->add_control( 'photolab_socials_position', array(
-				'label'    => __( 'Show social links in:', 'photolab' ),
+			) 
+		);
+		$wp_customize->add_control( 
+			'photolab_socials_position_header', 
+			array(
+				'label'    => __( 'Show social links in header', 'photolab' ),
 				'section'  => 'photolab_socials',
-				'settings' => 'photolab[socials_position]',
-				'type'     => 'select',
-				'choices'  => array(
-					'header' => __( 'Header', 'photolab' ),
-					'footer' => __( 'Footer', 'photolab' )
-				)
-		) );
+				'settings' => 'photolab_socials_position_header',
+				'type'     => 'checkbox'
+			) 
+		);
+		$wp_customize->add_control( 
+			'photolab_socials_position_footer', 
+			array(
+				'label'    => __( 'Show social links in footer', 'photolab' ),
+				'section'  => 'photolab_socials',
+				'settings' => 'photolab_socials_position_footer',
+				'type'     => 'checkbox'
+			) 
+		);
 
 		/* Social links */
 		$allowed_socials = photolab_allowed_socials();
@@ -285,6 +291,44 @@ if(!function_exists('photolab_add_customizer')) {
 		);
 
 		$wp_customize->add_setting( 
+			'sidebar_mode_left', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'photolab_sanitize_select'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'sidebar_mode_left', 
+			array(
+				'label'    => __( 'Show sidebar on left side', 'photolab' ),
+				'section'  => 'photolab_sidebars',
+				'settings' => 'sidebar_mode_left',
+				'type'     => 'checkbox'
+			) 
+		);
+
+		$wp_customize->add_setting( 
+			'sidebar_mode_right', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'photolab_sanitize_select'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'sidebar_mode_right', 
+			array(
+				'label'    => __( 'Show sidebar on right side', 'photolab' ),
+				'section'  => 'photolab_sidebars',
+				'settings' => 'sidebar_mode_right',
+				'type'     => 'checkbox'
+			) 
+		);
+
+		$wp_customize->add_setting( 
 			'sidebar_mode', 
 			array(
 				'default'           => '',
@@ -307,6 +351,82 @@ if(!function_exists('photolab_add_customizer')) {
 			) 
 		);
 
+		/**
+		 * Text color
+		 */
+		$wp_customize->add_setting( 
+			'text_color', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => ''
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'text_color', 
+				array(
+					'label'      => __( 'Text Color', 'photolab' ),
+					'section'    => 'colors',
+					'settings'   => 'text_color',
+				) 
+			)
+		);
+
+		/**
+		 * Color scheme
+		 */
+		$wp_customize->add_setting( 
+			'color_scheme', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => ''
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_scheme', 
+				array(
+					'label'      => __( 'Color Scheme', 'photolab' ),
+					'section'    => 'colors',
+					'settings'   => 'color_scheme',
+				) 
+			)
+		);
+
+		/**
+		 * Menu settings
+		 */
+		$wp_customize->add_section( 
+			'menu_settings', array(
+				'title'    => __( 'Menu Settings', 'photolab' ),
+				'priority' => 100
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'sticky_menu', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'photolab_sanitize_select'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'sticky_menu', 
+			array(
+				'label'    => __( 'Enable/Disable sticky menu', 'photolab' ),
+				'section'  => 'menu_settings',
+				'settings' => 'sticky_menu',
+				'type'     => 'checkbox'
+			) 
+		);
 	}
 }
 

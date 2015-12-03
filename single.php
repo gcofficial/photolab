@@ -15,7 +15,7 @@ get_header(); ?>
 			sprintf(
 				'%s-%s', 
 				'single', 
-				get_option('sidebar_mode')
+				getSidebarSideType()
 			) 
 		);
 		?>

@@ -670,12 +670,13 @@ add_filter( 'the_content', 'addTitleToContent' );
 function photolab_social_list( $where = 'header' ) {
 
 	$data     = get_option( 'photolab' );
-	$enabled  = isset( $data['enable_socials'] ) ? (bool)$data['enable_socials'] : false;
 	$position = isset( $data['socials_position'] ) ? esc_attr( $data['socials_position'] ) : 'header';
+	
+	$photolab_socials_position_header = get_option('photolab_socials_position_header');
+	$photolab_socials_position_footer = get_option('photolab_socials_position_footer');
 
-	if ( ! $enabled || $where !== $position ) {
-		return;
-	}
+	if($where == 'header' && $photolab_socials_position_header == '') return;
+	if($where == 'footer' && $photolab_socials_position_footer == '') return;
 
 	$socials = photolab_allowed_socials();
 
@@ -701,4 +702,63 @@ function photolab_social_list( $where = 'header' ) {
 
 	printf( '<ul class="social-list list-%1$s">%2$s</ul>', $where, $list );
 
+}
+
+/**
+ * Get sidebars type
+ * @return string --- sidebars type
+ */
+function getSidebarSideType()
+{
+	$key   = sprintf(
+		'l%sr%s', 
+		get_option('sidebar_mode_left'), 
+		get_option('sidebar_mode_right')
+	);
+	$values = array(
+		'lr'   => 'hide',
+		'l1r'  => 'left',
+		'lr1'  => 'right',
+		'l1r1' => 'leftright',
+	);
+	return $values[$key];
+}
+
+function getTextColor()
+{
+	$color = trim(get_option('text_color'));
+	if($color == '') $color = '#000';
+	return  $color;
+}
+
+function getColorScheme()
+{
+	// #22becc
+	$color = trim(get_option('color_scheme'));
+	if($color == '') $color = '#222';
+	return  $color;
+}
+
+function adjustBrightness($hex, $steps) 
+{
+    // Steps should be between -255 and 255. Negative = darker, positive = lighter
+    $steps = max(-255, min(255, $steps));
+
+    // Normalize into a six character long hex string
+    $hex = str_replace('#', '', $hex);
+    if (strlen($hex) == 3) {
+        $hex = str_repeat(substr($hex,0,1), 2).str_repeat(substr($hex,1,1), 2).str_repeat(substr($hex,2,1), 2);
+    }
+
+    // Split into three parts: R, G and B
+    $color_parts = str_split($hex, 2);
+    $return = '#';
+
+    foreach ($color_parts as $color) {
+        $color   = hexdec($color); // Convert to decimal
+        $color   = max(0,min(255,$color + $steps)); // Adjust color
+        $return .= str_pad(dechex($color), 2, '0', STR_PAD_LEFT); // Make two char hex code
+    }
+
+    return $return;
 }

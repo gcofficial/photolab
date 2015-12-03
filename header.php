@@ -20,6 +20,87 @@
 
 <?php wp_head(); ?>
 </head>
+<style>
+	body{
+		color: <?php echo getTextColor() ?>;
+	}
+
+	body #back-top a:hover {
+		border-color: <?php echo getColorScheme() ?>;
+	}
+
+	body input[type="text"]:focus,
+	body input[type="email"]:focus,
+	body input[type="url"]:focus,
+	body input[type="password"]:focus,
+	body input[type="search"]:focus {
+		border-color: <?php echo getColorScheme() ?>;
+		outline: none;
+	}
+
+	body .entry-wrapper .entry-border > div {
+		background: <?php echo getColorScheme() ?>;
+	}
+
+	body .entry-wrapper .entry-border:after{
+		background: <?php echo adjustBrightness(getColorScheme(), -50) ?>;
+	}
+
+	body .entry-wrapper .entry-border:before{
+		background: <?php echo adjustBrightness(getColorScheme(), -25) ?>;
+	}
+
+	body .entry-footer-item.meta-category .dashicons{
+		color: <?php echo adjustBrightness(getColorScheme(), -25) ?>;
+	}
+
+	body h1,
+	body h2,
+	body h3,
+	body h4,
+	body h5,
+	body h6 {
+	  color: <?php echo adjustBrightness(getColorScheme(), -55) ?>;;
+	}
+
+	body .post-nav-wrap.post-format-standart a .post-nav-text {
+		background: <?php echo getColorScheme() ?>;
+	}
+	body .post-nav-wrap.post-format-standart a:after {
+		background: <?php echo getColorScheme() ?>;
+	}
+	body .sf-menu > li.item-type-1 > a:before {
+  		background: <?php echo getColorScheme() ?>;
+	}
+	body .header-image-box .page-header-wrap .page-header.with-img.header-type-1 {
+		background: <?php echo getColorScheme() ?>;
+	}
+	body .entry-footer-item.meta-user .dashicons {
+		color: <?php echo getColorScheme() ?>;
+	}
+	body .post-thumbnail a:after {
+		background: <?php echo getColorScheme() ?>;
+	}
+	body #wp-calendar thead tr th:first-child {
+		border-top: 2px solid <?php echo getColorScheme() ?>;
+		border-bottom: 2px solid <?php echo getColorScheme() ?>;
+	}
+	body .tagcloud a.term-type-1:hover {
+		border-color: <?php echo getColorScheme() ?>;
+		background-color: <?php echo getColorScheme() ?>;
+	}
+	body .widget .cat-item:nth-child(8n+1) a:hover,
+	body .widget .menu li:nth-child(8n+1) a:hover,
+	body .widget.widget_archive li:nth-child(8n+1) a:hover {
+		color: <?php echo getColorScheme() ?>;
+	}
+	body .btn.btn-animated:hover {
+		border-bottom: 2px solid <?php echo getColorScheme() ?>;
+	}
+	body .btn.btn-animated:hover:before {
+		background: <?php echo getColorScheme() ?>;
+	}
+</style>
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">

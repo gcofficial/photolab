@@ -99,9 +99,8 @@ function photolab_assets() {
 
 	// Also enqueue Font Awesome for social icons, they are enabelrd in options
 	$options = get_option( 'photolab' );
-	if ( ! empty( $options ) && isset( $options['enable_socials'] ) && true === $options['enable_socials'] ) {
-		wp_enqueue_style( 'photolab-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
-	}
+	
+	wp_enqueue_style( 'photolab-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
 
 	// Script
 	wp_enqueue_script( 'photolab-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
@@ -232,6 +231,16 @@ function photolab_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Sidebar', 'photolab' ),
 		'id'            => 'sidebar-1',
+		'description'   => __( 'Allowed only on static pages', 'photolab' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Sidebar second', 'photolab' ),
+		'id'            => 'sidebar-2',
 		'description'   => __( 'Allowed only on static pages', 'photolab' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',

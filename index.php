@@ -20,11 +20,10 @@ get_header(); ?>
 			sprintf(
 				'%s-%s', 
 				'index', 
-				get_option('sidebar_mode')
+				getSidebarSideType()
 			) 
 		);
 		?>
-
 		</div>
 	</div><!-- #primary -->
 
