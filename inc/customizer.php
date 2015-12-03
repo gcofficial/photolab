@@ -328,29 +328,6 @@ if(!function_exists('photolab_add_customizer')) {
 			) 
 		);
 
-		$wp_customize->add_setting( 
-			'sidebar_mode', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'photolab_sanitize_select'
-			) 
-		);
-		$wp_customize->add_control( 
-			'sidebar_mode', 
-			array(
-				'label'    => __( 'Sidebar mode:', 'photolab' ),
-				'section'  => 'photolab_sidebars',
-				'settings' => 'sidebar_mode',
-				'type'     => 'select',
-				'choices'  => array(
-					'hide'  => __( 'Hide sidebar', 'photolab' ),
-					'left'  => __( 'Sidebar left', 'photolab' ),
-					'right' => __( 'Sidebar right', 'photolab' )
-				)
-			) 
-		);
-
 		/**
 		 * Text color
 		 */
