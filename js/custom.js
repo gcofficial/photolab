@@ -83,7 +83,6 @@ function getWindowHeight() {
                     //buffer = Math.floor(element_top / window_height);
                     buffer = Math.floor(element_top - window_height),
                     visible_scroll = parseInt($(window).scrollTop()) - buffer;
-                    console.log('visible_scroll', visible_scroll);
 
                 if ( visible_scroll > 0) 
                 {
@@ -110,7 +109,6 @@ function getWindowHeight() {
                         //buffer = Math.floor(element_top / window_height);
                         buffer = Math.floor(element_top - window_height),
                         visible_scroll = parseInt($(window).scrollTop()) - buffer;
-                        console.log('visible_scroll', visible_scroll);
                    
                     if ( visible_scroll > 0) {
                         if ( window_height > element_top ) {

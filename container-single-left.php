@@ -1,4 +1,5 @@
 <div class="col-sm-9 right-sidebar">
+<?php echo SocialPostTypes::getSocialPostCode($post); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<?php get_template_part( 'content', 'single' ); ?>

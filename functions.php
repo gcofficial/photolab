@@ -227,6 +227,30 @@ require get_template_directory() . '/inc/custom-header.php';
 // Jetpack compatibility file
 require get_template_directory() . '/inc/jetpack.php';
 
+/**
+ * Tools
+ */
+require_once get_template_directory() . '/inc/tools.php';
+
+/**
+ * Widgets
+ */
+require_once get_template_directory() . '/inc/widgets/accordion_widget.php';
+require_once get_template_directory() . '/inc/widgets/flex_slider_widget.php';
+require_once get_template_directory() . '/inc/widgets/instagram_widget.php';
+require_once get_template_directory() . '/inc/widgets/google_plus_widget.php';
+require_once get_template_directory() . '/inc/widgets/advertisement_widget.php';
+
+
+/**
+ * Meta Boxes
+ */
+require_once get_template_directory() . '/inc/metaboxes/social_post_types.php';
+
+/**
+ * Post Types
+ */
+require_once get_template_directory() . '/inc/post_types/accordion_items.php';
 
 /**
  * Register widget area.
