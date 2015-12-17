@@ -9,7 +9,7 @@ get_header(); ?>
 
 	<div id="primary" class="container">
 		<div class="row">
-
+			<?php echo GeneralSiteSettingsModel::getBreadcrumbs(); ?>
 			<section class="error-404 not-found col-md-12">
 				<header class="page-header">
 					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'photolab' ); ?></h1>
@@ -26,5 +26,4 @@ get_header(); ?>
 		</div>
 	</div><!-- #primary -->
 
-<?php get_sidebar('footer'); ?>
 <?php get_footer(); ?>

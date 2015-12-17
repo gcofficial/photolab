@@ -41,7 +41,7 @@ class InstagramWidget extends WP_Widget{
 			$user_name, 
 			$client_id
 		);
-		$request = json_decode(file_get_contents($query), true);
+		$request = (array) json_decode(@file_get_contents($query), true);
 		
 		if(array_key_exists('data', $request))
 		{

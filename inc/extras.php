@@ -249,3 +249,13 @@ function photoloab_layout_class() {
 	}
 	return 'col-sm-12';
 }
+
+/**
+ * Add some mime types
+ * @param array $mime_types --- mime types
+ */
+add_filter('upload_mimes', 'addSomeMimeTypes', 1, 1);
+function addSomeMimeTypes($mime_types){
+    $mime_types['svg'] = 'image/svg+xml';
+    return $mime_types;
+}

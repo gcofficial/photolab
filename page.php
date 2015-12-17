@@ -14,7 +14,7 @@ get_header(); ?>
 
 	<div id="primary" class="container">
 		<div class="row">
-
+			<?php echo GeneralSiteSettingsModel::getBreadcrumbs(); ?>
 			<?php
 			get_template_part( 
 				'container', 
@@ -29,5 +29,4 @@ get_header(); ?>
 		</div><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar('footer'); ?>
 <?php get_footer(); ?>

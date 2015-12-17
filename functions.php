@@ -37,9 +37,13 @@ function photolab_setup() {
 	add_editor_style( 'editor-style.css' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'photolab' ),
-	) );
+	register_nav_menus( 
+		array(
+			'top'    => __( 'Top Menu', 'photolab' ),
+			'main'   => __( 'Main Menu', 'photolab' ),
+			'footer' => __( 'Footer Menu', 'photolab' ),
+		) 
+	);
 
 	// Enable support for Post Formats.
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'gallery', 'video', 'quote', 'link' ) );
@@ -112,11 +116,12 @@ function photolab_assets() {
 	wp_enqueue_script( 'photolab-device', get_template_directory_uri() . '/js/device.min.js', array('jquery'), '1.0.2', true );
 	wp_enqueue_script( 'photolab-sticky', get_template_directory_uri() . '/js/jquery.stickyheader.js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'photolab-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'masonry', 'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', array('jquery') );
 	
 	wp_localize_script( 
 		'photolab-custom', 
 		'photolab_custom', 
-		array('stickup_menu' => get_option('sticky_menu')) 
+		array('stickup_menu' => MenuSettingsModel::getStickupMenu()) 
 	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -233,6 +238,20 @@ require get_template_directory() . '/inc/jetpack.php';
 require_once get_template_directory() . '/inc/tools.php';
 
 /**
+ * Walkers
+ */
+require_once get_template_directory() . '/inc/photolab_walker.php';
+
+/**
+ * Models
+ */
+require_once get_template_directory() . '/inc/models/options.php';
+require_once get_template_directory() . '/inc/models/general_site_settings.php';
+require_once get_template_directory() . '/inc/models/menu_settings.php';
+require_once get_template_directory() . '/inc/models/colors.php';
+require_once get_template_directory() . '/inc/models/blog_settings.php';
+require_once get_template_directory() . '/inc/models/footer_settings.php';
+/**
  * Widgets
  */
 require_once get_template_directory() . '/inc/widgets/accordion_widget.php';
@@ -278,14 +297,114 @@ function photolab_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area', 'photolab' ),
-		'id'            => 'footer',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s col-md-3 col-sm-6">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
+	register_sidebar( 
+		array(
+			'name'          => __( 'Footer Widget Area', 'photolab' ),
+			'id'            => 'footer',
+			'description'   => '',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s '.FooterSettingsModel::getColumnsCSSClass().' col-sm-6">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) 
+	);
 }
 add_action( 'widgets_init', 'photolab_widgets_init' );
+
+
+/**
+ * Return template part in string
+ * @param  string $slug --- template part slug
+ * @param  string $name --- tmplate name
+ * @return string --- html code
+ */
+function getTemplatePartStr( $slug, $name )
+{
+	ob_start();
+	get_template_part( $slug, $name );
+	return ob_get_clean();
+}
+
+/**
+ * Loop 
+ * @param  string $slug --- slug name
+ * @param  string $name --- name
+ * @return string       --- html code
+ */
+function loop($slug, $name)
+{
+	if(BlogSettingsModel::isMasonryLayout())
+	{
+		return masonryLoop($slug, $name);
+	}
+
+	if(BlogSettingsModel::isGridLayout())
+	{
+		return gridLoop($slug, $name);
+	}
+	return defaultLoop($slug, $name);
+}
+
+/**
+ * Grid loop
+ * @param  string $slug --- slug name
+ * @param  string $name --- name
+ * @return string       --- html code
+ */
+function gridLoop($slug, $name)
+{
+	global $wp_query;
+	$posts = $wp_query->get_posts();
+	return Tools::renderView(
+		'loop_row_grid',
+		array(
+			'posts'            => $posts,
+			'columns_count'    => BlogSettingsModel::getColumns(),
+			'column_css_class' => BlogSettingsModel::getColumnCSSClass(),
+			'slug'             => $slug,
+			'name'             => $name
+		)
+	);	
+}
+
+/**
+ * Masonry loop
+ * @param  string $slug --- slug name
+ * @param  string $name --- name
+ * @return string       --- html code
+ */
+function masonryLoop($slug, $name)
+{
+	global $wp_query;
+	$posts = $wp_query->get_posts();
+	return Tools::renderView(
+		'loop_row_masonry',
+		array(
+			'posts'            => $posts,
+			'columns_count'    => BlogSettingsModel::getColumns(),
+			'column_css_class' => BlogSettingsModel::getColumnCSSClass(),
+			'slug'             => $slug,
+			'name'             => $name
+		)
+	);	
+}
+
+/**
+ * Default loop
+ * @param  string $slug --- slug name
+ * @param  string $name --- name
+ * @return string       --- html code
+ */
+function defaultLoop($slug, $name)
+{
+	global $wp_query;
+	$posts = $wp_query->get_posts();
+	return Tools::renderView(
+		'loop_row',
+		array(
+			'posts'            => $posts,
+			'slug'             => $slug,
+			'name'             => $name
+		)
+	);
+}

@@ -7,16 +7,18 @@
  * @package photolab
  */
 ?>
-
+	<?php 
+	if(FooterSettingsModel::getStyle() != 'minimal')
+	{
+		get_sidebar('footer');
+	}
+	?>
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
 			<div class="site-info">
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'photolab' ) ); ?>" rel="nofollow"><?php printf( __( 'Proudly powered by %s', 'photolab' ), 'WordPress' ); ?></a>
-				<span class="sep"> | </span>
-				<a href="<?php echo esc_url( __( 'http://www.templatemonster.com/', 'photolab' ) ); ?>" rel="nofollow" target="_blank"><?php printf( __( 'Theme %1$s designed by %2$s', 'photolab' ), 'Photolab', 'TemplateMonster' ); ?></a>
-				<?php photolab_social_list( 'footer' ); ?>
+				<?php echo FooterSettingsModel::getFooter(); ?>
 			</div><!-- .site-info -->
 		</div>
 	</footer><!-- #colophon -->

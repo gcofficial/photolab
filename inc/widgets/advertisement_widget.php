@@ -49,15 +49,12 @@ class AdvertisementWidget extends WP_Widget{
 	 */
 	public function uploadScripts()
 	{
-		wp_enqueue_script('media-upload');
-        wp_enqueue_script('thickbox');
+		wp_enqueue_media();
         wp_enqueue_script(
         	'upload_media_widget', 
         	get_template_directory_uri().'/js/advertisement.js', 
         	array('jquery')
         );
-
-        wp_enqueue_style('thickbox');
 	}
 
 	/**

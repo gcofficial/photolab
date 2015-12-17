@@ -8,8 +8,18 @@
 <div class="footer-widgets">
 	<div class="container">
 		<div class="row">
-		<?php if ( ! dynamic_sidebar( 'footer' ) ) : ?>
-
+		<?php
+		if(is_active_sidebar('footer' )):
+			echo Tools::renderView(
+				'widgets_footer',
+				array(
+					'widgets' => FooterSettingsModel::getAllFooterWidgetsHTML(),
+					'columns' => FooterSettingsModel::getColumns(),
+					'css'     => FooterSettingsModel::getColumnsCSSClass()
+				)
+			);
+		else:
+		?>
 			<aside id="search" class="widget widget_search col-md-4">
 				<?php get_search_form(); ?>
 			</aside>

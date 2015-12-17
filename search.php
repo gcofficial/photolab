@@ -9,7 +9,7 @@ get_header(); ?>
 
 	<div id="primary" class="container">
 		<div class="row">
-
+		<?php echo GeneralSiteSettingsModel::getBreadcrumbs(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
@@ -37,5 +37,4 @@ get_header(); ?>
 		</div>
 	</div><!-- #primary -->
 
-<?php get_sidebar('footer'); ?>
 <?php get_footer(); ?>

@@ -1,36 +1,100 @@
 /**
- * Theme Customizer enhancements for a better user experience.
- * licensed under GNU General Public License v3
- * Contains handlers to make Theme Customizer preview reload changes asynchronously.
+ * Customizer Communicator
  */
+( function ( exports, $ ) {
+	"use strict";
 
-( function( $ ) {
-	// Site title and description.
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
-		} );
+	var api = wp.customize, OldPreviewer;
+
+	/**
+	 * Toggle columns in Blog Settings section
+	 * @param {string} name --- control name
+	 * @param  {boolean} show --- true = show | false = hide
+	 * @return
+	 */
+	function ctrlToggle(name, show)
+	{
+		if(show)
+		{
+			api.control( name ).activate();
+		}
+		else
+		{
+			api.control( name ).deactivate();
+		}
+	}
+
+	api(
+		'bs[layout_style]',
+		function(value){
+			value.bind(
+				function(to){
+					ctrlToggle('columns', to == 'grid' || to == 'masonry');
+				}
+			)
+		}
+	);
+
+	api(
+		'fs[footer_style]',
+		function(value){
+			value.bind(
+				function(to){
+					ctrlToggle('footer_logo', to == 'centered');
+				}
+			)
+		}
+	);
+
+	api(
+		'fs[footer_style]',
+		function(value){
+			value.bind(
+				function(to){
+					ctrlToggle('footer_columns', to == 'default' || to == 'centered');
+				}
+			)
+		}
+	);
+
+	// Custom Customizer Previewer class (attached to the Customize API)
+	api.myCustomizerPreviewer = {
+		// Init
+		init: function () {
+			var self = this; // Store a reference to "this" in case callback functions need to reference it
+
+			// Listen to the "my-custom-event" event has been triggered from the Previewer
+			this.preview.bind( 
+				'my-custom-event', 
+				function( data ) {
+					ctrlToggle('columns', api.instance( 'bs[layout_style]' ).get() == 'grid' || api.instance( 'bs[layout_style]' ).get() == 'masonry');
+					ctrlToggle('footer_logo', api.instance( 'fs[footer_style]' ).get() == 'centered');
+					ctrlToggle('footer_columns', api.instance( 'fs[footer_style]' ).get() == 'default' || api.instance( 'fs[footer_style]' ).get() == 'centered' );
+			} );
+		}
+	};
+
+	/**
+	 * Capture the instance of the Preview since it is private (this has changed in WordPress 4.0)
+	 *
+	 * @see https://github.com/WordPress/WordPress/blob/5cab03ab29e6172a8473eb601203c9d3d8802f17/wp-admin/js/customize-controls.js#L1013
+	 */
+	OldPreviewer = api.Previewer;
+	api.Previewer = OldPreviewer.extend( {
+		initialize: function( params, options ) {
+			// Store a reference to the Previewer
+			api.myCustomizerPreviewer.preview = this;
+
+			// Call the old Previewer's initialize function
+			OldPreviewer.prototype.initialize.call( this, params, options );
+		}
 	} );
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
-		} );
+
+	// Document Ready
+	$( function() {
+		// Initialize our Previewer
+		api.myCustomizerPreviewer.init();
 	} );
-	// Header text color.
-	wp.customize( 'header_textcolor', function( value ) {
-		value.bind( function( to ) {
-			if ( 'blank' === to ) {
-				$( '.site-title, .site-description' ).css( {
-					'clip': 'rect(1px, 1px, 1px, 1px)',
-					'position': 'absolute'
-				} );
-			} else {
-				$( '.site-title, .site-description' ).css( {
-					'clip': 'auto',
-					'color': to,
-					'position': 'relative'
-				} );
-			}
-		} );
-	} );
-} )( jQuery );
+
+	wp.customize.Previewer.bind('active', function(){ console.log('yeah i"m active'); })
+} )( wp, jQuery ); 

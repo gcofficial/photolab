@@ -6,5 +6,5 @@
 <p>
     <label for="<?php echo $obj->get_field_name( 'image' ); ?>"><?php _e( 'Image:' ); ?></label>
     <input name="<?php echo $obj->get_field_name( 'image' ); ?>" id="<?php echo $obj->get_field_id( 'image' ); ?>" class="widefat" type="text" size="36"  value="<?php echo esc_url( $image ); ?>" />
-    <input class="upload_image_button button button-primary" type="button" value="<?php _e('Upload Image', 'photolab'); ?>" />
+    <input id="button_<?php echo $obj->get_field_id( 'image' ); ?>" class="upload_image_button button button-primary" type="button" value="<?php _e('Upload Image', 'photolab'); ?>" />
 </p>

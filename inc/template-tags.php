@@ -654,6 +654,10 @@ function renderTitle()
 	return $var;
 }
 
+/**
+ * Add title to content
+ * @param string $content --- html code
+ */
 function addTitleToContent( $content ) 
 {
 	$custom_content = '';
@@ -667,7 +671,9 @@ add_filter( 'the_content', 'addTitleToContent' );
 /**
  * Show social links list
  */
-function photolab_social_list( $where = 'header' ) {
+function photolab_social_list( $where = 'header', $echo = true ) {
+
+	ob_start();
 
 	$data     = get_option( 'photolab' );
 	$position = isset( $data['socials_position'] ) ? esc_attr( $data['socials_position'] ) : 'header';
@@ -702,6 +708,12 @@ function photolab_social_list( $where = 'header' ) {
 
 	printf( '<ul class="social-list list-%1$s">%2$s</ul>', $where, $list );
 
+	$var = ob_get_contents();
+	ob_end_clean();
+	if($echo == true)
+		echo $var;
+	else
+		return $var;
 }
 
 /**
@@ -720,25 +732,21 @@ function getSidebarSideType()
 		'l1r'  => 'left',
 		'lr1'  => 'right',
 		'l1r1' => 'leftright',
-	);
+	);	
+
+	if(!BlogSettingsModel::isDefaultLayout())
+	{
+		$values['l1r1'] = 'left';
+	}
 	return $values[$key];
 }
 
-function getTextColor()
-{
-	$color = trim(get_option('text_color'));
-	if($color == '') $color = '#000';
-	return  $color;
-}
-
-function getColorScheme()
-{
-	// #22becc
-	$color = trim(get_option('color_scheme'));
-	if($color == '') $color = '#222';
-	return  $color;
-}
-
+/**
+ * Adjust brightness
+ * @param  string $hex --- color hex
+ * @param  int $steps --- steps
+ * @return string --- color hex
+ */
 function adjustBrightness($hex, $steps) 
 {
     // Steps should be between -255 and 255. Negative = darker, positive = lighter

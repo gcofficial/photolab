@@ -22,6 +22,12 @@ function getWindowHeight() {
 (function($) {
 
     $(window).load(function() {
+
+        if(jQuery('.loader-wrapper').length > 0)
+        {
+            jQuery('.loader-wrapper').delay(1000).fadeOut();
+        }
+
         if(!device.mobile() && !device.tablet() && !device.ipod()){
 
             if(photolab_custom.stickup_menu == '1')
@@ -151,6 +157,10 @@ function getWindowHeight() {
 	})
 
     jQuery(document).ready(function($) {
+        var $container = $('#masonry');
+        $container.masonry({
+           itemSelector: '.brick'
+        });
         // init popup galleries for gallery post format featured galleries
         $(".post-featured-gallery").each(function(index, el) {
             $('#' + $(this).data("gall-id") + ' .lightbox-gallery').magnificPopup({
@@ -208,3 +218,23 @@ function getWindowHeight() {
     });
 
 })(jQuery);
+
+jQuery(document).on(
+    'click',
+    '#top-bar-search-button',
+    function(e){
+        e.preventDefault();
+    }
+);
+
+jQuery( '#top-bar-search-button' ).on({
+    focus: function() {
+        console.log('focus');
+        jQuery( '#top-bar-search-form' ).parent().addClass( 'adminbar-focused' );
+    }, 
+    blur: function() 
+    {
+        console.log('blur');
+        jQuery( '#top-bar-search-form' ).parent().removeClass( 'adminbar-focused' );
+    }
+});
