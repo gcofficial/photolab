@@ -16,6 +16,10 @@ function photolab_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+	// ==============================================================
+	// Rename default sections
+	// ==============================================================
 }
 add_action( 'customize_preview_init', 'photolab_customize_register' );
 
@@ -82,7 +86,7 @@ if(!function_exists('photolab_add_customizer')) {
 
 		/* Socials section */
 		$wp_customize->add_section( 'photolab_socials', array(
-			'title'    => __( 'Socials', 'photolab' ),
+			'title'    => __( 'Socials Settings', 'photolab' ),
 			'priority' => 40
 		));
 
@@ -336,189 +340,14 @@ if(!function_exists('photolab_add_customizer')) {
 		);
 
 		// ==============================================================
-		// Colors
+		// Header settings
 		// ==============================================================
-		
-		$wp_customize->add_setting( 
-			'colors[text]',  
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
+		$wp_customize->get_section('header_image')->title = __('Header Settings', 'photolab');
 
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'text_color', 
-				array(
-					'label'      => __( 'Text Color', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[text]',
-				) 
-			)
-		);
+		$wp_customize->get_control('background_image')->section = 'header_image';
 
 		$wp_customize->add_setting( 
-			'colors[scheme]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_scheme', 
-				array(
-					'label'      => __( 'Color Scheme', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[scheme]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h1]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h1', 
-				array(
-					'label'      => __( 'Color h1', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h1]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h2]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h2', 
-				array(
-					'label'      => __( 'Color h2', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h2]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h3]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h3', 
-				array(
-					'label'      => __( 'Color h3', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h3]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h4]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h4', 
-				array(
-					'label'      => __( 'Color h4', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h4]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h5]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h5', 
-				array(
-					'label'      => __( 'Color h5', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h5]',
-				) 
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'colors[h6]', 
-			array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
-			) 
-		);
-
-		$wp_customize->add_control( 
-			new WP_Customize_Color_Control( 
-				$wp_customize, 
-				'color_h6', 
-				array(
-					'label'      => __( 'Color h6', 'photolab' ),
-					'section'    => 'colors',
-					'settings'   => 'colors[h6]',
-				) 
-			)
-		);
-
-		// ==============================================================
-		// Menu settings
-		// ==============================================================
-		$wp_customize->add_section( 
-			'menu_settings', array(
-				'title'    => __( 'Menu Settings', 'photolab' ),
-				'priority' => 100
-			)
-		);
-
-		$wp_customize->add_setting( 
-			'ms[stickup_menu]', 
+			'header_settings[stickup_menu]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -530,15 +359,15 @@ if(!function_exists('photolab_add_customizer')) {
 			'stickup_menu', 
 			array(
 				'label'    => __( 'Enable/Disable stickup menu', 'photolab' ),
-				'section'  => 'menu_settings',
-				'settings' => 'ms[stickup_menu]',
+				'section'  => 'header_image',
+				'settings' => 'header_settings[stickup_menu]',
 				'type'     => 'checkbox',
 				'std'    => '1'
 			) 
 		);
 
 		$wp_customize->add_setting( 
-			'ms[title_attributes]', 
+			'header_settings[title_attributes]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -550,15 +379,15 @@ if(!function_exists('photolab_add_customizer')) {
 			'title_attributes', 
 			array(
 				'label'    => __( 'Enable/Disable title attributes', 'photolab' ),
-				'section'  => 'menu_settings',
-				'settings' => 'ms[title_attributes]',
+				'section'  => 'header_image',
+				'settings' => 'header_settings[title_attributes]',
 				'type'     => 'checkbox',
 				'std'    => '1'
 			) 
 		);
 		
 		$wp_customize->add_setting( 
-			'ms[search_box]', 
+			'header_settings[search_box]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -570,15 +399,15 @@ if(!function_exists('photolab_add_customizer')) {
 			'search_box', 
 			array(
 				'label'    => __( 'Enable/Disable search box', 'photolab' ),
-				'section'  => 'menu_settings',
-				'settings' => 'ms[search_box]',
+				'section'  => 'header_image',
+				'settings' => 'header_settings[search_box]',
 				'type'     => 'checkbox',
 				'std'    => '1'
 			) 
 		);
 
 		$wp_customize->add_setting( 
-			'ms[disclimer_text]', 
+			'header_settings[disclimer_text]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -590,8 +419,8 @@ if(!function_exists('photolab_add_customizer')) {
 			'disclimer_text', 
 			array(
 				'label'    => __( 'Disclaimer text', 'photolab' ),
-				'section'  => 'menu_settings',
-				'settings' => 'ms[disclimer_text]',
+				'section'  => 'header_image',
+				'settings' => 'header_settings[disclimer_text]',
 				'type'     => 'textarea'
 			) 
 		);	
@@ -599,7 +428,7 @@ if(!function_exists('photolab_add_customizer')) {
 		
 
 		$wp_customize->add_setting( 
-			'ms[header_style]', 
+			'header_settings[header_style]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -611,8 +440,8 @@ if(!function_exists('photolab_add_customizer')) {
 			'header_style', 
 			array(
 				'label'    => __( 'Header style', 'photolab' ),
-				'section'  => 'menu_settings',
-				'settings' => 'ms[header_style]',
+				'section'  => 'header_image',
+				'settings' => 'header_settings[header_style]',
 				'type'     => 'select',
 				'choices'  => array(
 					'default'  => __( 'Default', 'photolab' ),
@@ -629,6 +458,29 @@ if(!function_exists('photolab_add_customizer')) {
 			'general_site_settings', array(
 				'title'    => __( 'General Site Settings', 'photolab' ),
 				'priority' => 10
+			)
+		);
+
+		$wp_customize->get_control('background_color')->section = 'general_site_settings';
+
+		$wp_customize->add_setting( 
+			'gss[color_scheme]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_scheme', 
+				array(
+					'label'      => __( 'Color Scheme', 'photolab' ),
+					'section'    => 'general_site_settings',
+					'settings'   => 'gss[color_scheme]',
+				) 
 			)
 		);
 
@@ -889,7 +741,10 @@ if(!function_exists('photolab_add_customizer')) {
 		// ==============================================================
 		// Remove some sections
 		// ==============================================================
-		$wp_customize->remove_section("title_tagline");
+		$wp_customize->remove_section('title_tagline');
+		$wp_customize->remove_section('background_image');
+		$wp_customize->remove_section('static_front_page');
+		$wp_customize->remove_section('colors');
 
 		// ==============================================================
 		// Blog settings
@@ -900,6 +755,8 @@ if(!function_exists('photolab_add_customizer')) {
 				'priority' => 100
 			)
 		);
+
+		$wp_customize->get_control('show_on_front')->section = 'blog_settings';
 
 		$wp_customize->add_setting( 
 			'bs[layout_style]', 
@@ -953,6 +810,152 @@ if(!function_exists('photolab_add_customizer')) {
 		// ==============================================================
 		// Typography settings
 		// ==============================================================
+		$wp_customize->add_setting( 
+			'typography[color_text]',  
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'text_color', 
+				array(
+					'label'      => __( 'Text Color', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_text]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h1]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h1', 
+				array(
+					'label'      => __( 'Color h1', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h1]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h2]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h2', 
+				array(
+					'label'      => __( 'Color h2', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h2]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h3]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h3', 
+				array(
+					'label'      => __( 'Color h3', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h3]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h4]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h4', 
+				array(
+					'label'      => __( 'Color h4', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h4]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h5]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h5', 
+				array(
+					'label'      => __( 'Color h5', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h5]',
+				) 
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[color_h6]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new WP_Customize_Color_Control( 
+				$wp_customize, 
+				'color_h6', 
+				array(
+					'label'      => __( 'Color h6', 'photolab' ),
+					'section'    => 'typography_settings',
+					'settings'   => 'typography[color_h6]',
+				) 
+			)
+		);
 		$wp_customize->add_section( 
 			'typography_settings', array(
 				'title'    => __( 'Typography settings', 'photolab' ),

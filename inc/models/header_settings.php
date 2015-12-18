@@ -1,6 +1,6 @@
 <?php
 
-class MenuSettingsModel extends OptionsModel{
+class HeaderSettingsModel extends OptionsModel{
 
 	/**
 	 * Get all options
@@ -8,7 +8,7 @@ class MenuSettingsModel extends OptionsModel{
 	 */
 	public static function getAll()
 	{
-		return (array) get_option('ms');
+		return (array) get_option('header_settings');
 	}
 
 	/**

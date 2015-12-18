@@ -24,11 +24,11 @@
 </head>
 <style>
 	body{
-		color: <?php echo ColorsModel::getTextColor() ?>;
+		color: <?php echo TypographySettingsModel::getTextColor() ?>;
 	}
 
 	body #back-top a:hover {
-		border-color: <?php echo ColorsModel::getColorScheme() ?>;
+		border-color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 
 	body input[type="text"]:focus,
@@ -36,24 +36,24 @@
 	body input[type="url"]:focus,
 	body input[type="password"]:focus,
 	body input[type="search"]:focus {
-		border-color: <?php echo ColorsModel::getColorScheme() ?>;
+		border-color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 		outline: none;
 	}
 
 	body .entry-wrapper .entry-border > div {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 
 	body .entry-wrapper .entry-border:after{
-		background: <?php echo adjustBrightness(ColorsModel::getColorScheme(), -50) ?>;
+		background: <?php echo adjustBrightness(GeneralSiteSettingsModel::getColorScheme(), -50) ?>;
 	}
 
 	body .entry-wrapper .entry-border:before{
-		background: <?php echo adjustBrightness(ColorsModel::getColorScheme(), -25) ?>;
+		background: <?php echo adjustBrightness(GeneralSiteSettingsModel::getColorScheme(), -25) ?>;
 	}
 
 	body .entry-footer-item.meta-category .dashicons{
-		color: <?php echo adjustBrightness(ColorsModel::getColorScheme(), -25) ?>;
+		color: <?php echo adjustBrightness(GeneralSiteSettingsModel::getColorScheme(), -25) ?>;
 	}
 
 	body h1,
@@ -62,72 +62,72 @@
 	body h4,
 	body h5,
 	body h6 {
-	  color: <?php echo adjustBrightness(ColorsModel::getColorScheme(), -55) ?>;;
+	  color: <?php echo adjustBrightness(GeneralSiteSettingsModel::getColorScheme(), -55) ?>;;
 	}
 
 	body .post-nav-wrap.post-format-standart a .post-nav-text {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .post-nav-wrap.post-format-standart a:after {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .sf-menu > li.item-type-1 > a:before {
-  		background: <?php echo ColorsModel::getColorScheme() ?>;
+  		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .header-image-box .page-header-wrap .page-header.with-img.header-type-1 {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .entry-footer-item.meta-user .dashicons {
-		color: <?php echo ColorsModel::getColorScheme() ?>;
+		color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .post-thumbnail a:after {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body #wp-calendar thead tr th:first-child {
-		border-top: 2px solid <?php echo ColorsModel::getColorScheme() ?>;
-		border-bottom: 2px solid <?php echo ColorsModel::getColorScheme() ?>;
+		border-top: 2px solid <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
+		border-bottom: 2px solid <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .tagcloud a.term-type-1:hover {
-		border-color: <?php echo ColorsModel::getColorScheme() ?>;
-		background-color: <?php echo ColorsModel::getColorScheme() ?>;
+		border-color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
+		background-color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .widget .cat-item:nth-child(8n+1) a:hover,
 	body .widget .menu li:nth-child(8n+1) a:hover,
 	body .widget.widget_archive li:nth-child(8n+1) a:hover {
-		color: <?php echo ColorsModel::getColorScheme() ?>;
+		color: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .btn.btn-animated:hover {
-		border-bottom: 2px solid <?php echo ColorsModel::getColorScheme() ?>;
+		border-bottom: 2px solid <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .btn.btn-animated:hover:before {
-		background: <?php echo ColorsModel::getColorScheme() ?>;
+		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
 	body .container{
 		width: <?php echo GeneralSiteSettingsModel::getMaxContainerSize(); ?>px;
 	}
 
 	body h1{
-		color: <?php echo ColorsModel::getH(1) ?>;
+		color: <?php echo TypographySettingsModel::getH(1) ?>;
 	}
 
 	body h2{
-		color: <?php echo ColorsModel::getH(2); ?>;
+		color: <?php echo TypographySettingsModel::getH(2); ?>;
 	}
 
 	body h3{
-		color: <?php echo ColorsModel::getH(3); ?>;
+		color: <?php echo TypographySettingsModel::getH(3); ?>;
 	}
 
 	body h4{
-		color: <?php echo ColorsModel::getH(4); ?>;
+		color: <?php echo TypographySettingsModel::getH(4); ?>;
 	}
 
 	body h5{
-		color: <?php echo ColorsModel::getH(5); ?>;
+		color: <?php echo TypographySettingsModel::getH(5); ?>;
 	}
 
 	body h6{
-		color: <?php echo ColorsModel::getH(6); ?>;
+		color: <?php echo TypographySettingsModel::getH(6); ?>;
 	}
 
 	.brick {
@@ -146,8 +146,8 @@
 	<?php if(has_nav_menu('top')): ?>
 	<div class="top-menu">
 		<?php 
-		echo MenuSettingsModel::getDisclimer();
-		if(MenuSettingsModel::getSearchBox())
+		echo HeaderSettingsModel::getDisclimer();
+		if(HeaderSettingsModel::getSearchBox())
 		{
 			get_search_form(); 	
 		}
@@ -167,7 +167,7 @@
 		?>
 	</div>
 	<?php endif; ?>
-	<?php echo MenuSettingsModel::getHeader(); ?>
+	<?php echo HeaderSettingsModel::getHeader(); ?>
 	<div class="header-image-box">
 	<?php
 		$header_image  = get_header_image();

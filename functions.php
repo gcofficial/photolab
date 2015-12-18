@@ -121,7 +121,7 @@ function photolab_assets() {
 	wp_localize_script( 
 		'photolab-custom', 
 		'photolab_custom', 
-		array('stickup_menu' => MenuSettingsModel::getStickupMenu()) 
+		array('stickup_menu' => HeaderSettingsModel::getStickupMenu()) 
 	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -247,8 +247,7 @@ require_once get_template_directory() . '/inc/photolab_walker.php';
  */
 require_once get_template_directory() . '/inc/models/options.php';
 require_once get_template_directory() . '/inc/models/general_site_settings.php';
-require_once get_template_directory() . '/inc/models/menu_settings.php';
-require_once get_template_directory() . '/inc/models/colors.php';
+require_once get_template_directory() . '/inc/models/header_settings.php';
 require_once get_template_directory() . '/inc/models/blog_settings.php';
 require_once get_template_directory() . '/inc/models/footer_settings.php';
 require_once get_template_directory() . '/inc/models/typography_settings.php';

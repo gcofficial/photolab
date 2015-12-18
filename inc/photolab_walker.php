@@ -143,7 +143,7 @@ class PhotolabWalker extends Walker_Nav_Menu {
 		$item_output .= '</a>';
 		if($depth == 0)
 		{
-			if(MenuSettingsModel::getTitleAttributes())
+			if(HeaderSettingsModel::getTitleAttributes())
 			{
 				$item_output .= sprintf('<span class="title-attributes">%s</span>', $item->post_excerpt);
 			}	

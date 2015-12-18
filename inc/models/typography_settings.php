@@ -131,4 +131,27 @@ class TypographySettingsModel extends OptionsModel{
 		}
 		return $result;
 	}
+
+	/**
+	 * Get text color HEX 
+	 * @return string --- text color HEX
+	 */
+	public static function getTextColor()
+	{
+		$color = trim(self::getOption('color_text'));
+		if($color == '') $color = '#000';
+		return  $color;
+	}
+
+	/**
+	 * Get text H1 color HEX 
+	 * @param $num --- H tag number
+	 * @return string --- text H1 color HEX
+	 */
+	public static function getH($num)
+	{
+		$color = trim(self::getOption('color_h' . $num));
+		if($color == '') $color = '#333';
+		return  $color;
+	}
 }

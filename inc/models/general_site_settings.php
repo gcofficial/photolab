@@ -105,4 +105,15 @@ class GeneralSiteSettingsModel extends OptionsModel{
 		if(self::getOption('page_preloader') != '1') return '';
 		return Tools::renderView('loader');
 	}
+
+	/**
+	 * Get color scheme HEX
+	 * @return string --- color scheme HEX
+	 */
+	public static function getColorScheme()
+	{
+		$color = trim(self::getOption('color_scheme'));
+		if($color == '') $color = '#222';
+		return  $color;
+	}
 }
