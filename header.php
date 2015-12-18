@@ -133,6 +133,11 @@
 	.brick {
 		width: <?php echo BlogSettingsModel::getBrickWidth(); ?>%;
 	}
+	<?php
+	echo TypographySettingsModel::getBaseFSize();
+	echo TypographySettingsModel::getBaseFFamily();
+	echo TypographySettingsModel::getHeadingFFamily();
+	?>
 </style>
 
 <body <?php body_class(); ?>>

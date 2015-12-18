@@ -31,32 +31,6 @@ function my_customize_controls_enqueue_scripts() {
 	);
 }
 
-/**
- * This function is triggered on the initialization of the Previewer in the Customizer. We add actions
- * that pertain to the Previewer window here. The actions added here are triggered only in
- * the Previewer and not in the Customizer.
- */
-add_action( 'customize_preview_init', 'my_customize_preview_init' );
-function my_customize_preview_init() 
-{	
-	add_action( 'wp_enqueue_scripts', 'my_wp_enqueue_scripts' );
-}
-/**
- * This function is called only on the Previwer and enqueues scripts and styles.
- */
-function my_wp_enqueue_scripts() {
-	/*
-	 * Our Customizer script
-	 *
-	 * Dependencies: Customizer Preview Widgets script (core)
-	 */
-	wp_enqueue_script( 
-		'my-customizer-previewer', 
-		get_template_directory_uri() . '/js/customizer-previewer.js', 
-		array( 'customize-preview-widgets' ) 
-	);
-}
-
 
 
 
@@ -613,7 +587,7 @@ if(!function_exists('photolab_add_customizer')) {
 				array(
 					'default'           => '',
 					'type'              => 'option',
-					'sanitize_callback' => 'sanitize_text_field'
+					'sanitize_callback' => 'sanitize_html'
 				) 
 			);
 
@@ -880,7 +854,7 @@ if(!function_exists('photolab_add_customizer')) {
 				'sanitize_callback' => 'sanitize_text_field'
 			) 
 		);
-
+		
 		$wp_customize->add_control( 
 			'footer_columns', 
 			array(
@@ -894,7 +868,7 @@ if(!function_exists('photolab_add_customizer')) {
 					'4' => 4,
 				),
 			) 
-		);
+		);	
 
 		$wp_customize->add_setting( 
 			'fs[logo]', 
@@ -962,20 +936,11 @@ if(!function_exists('photolab_add_customizer')) {
 			array(
 				'default'           => '2',
 				'type'              => 'option',
-				'sanitize_callback' => 'sanitize_text_field'
+				'sanitize_callback' => 'sanitize_text_field',
+				'transport'         => 'postMessage'
 			) 
 		);
-
-		$wp_customize->add_control( 
-			'columns', 
-			array(
-				'label'    => __( 'Columns (2, 3)', 'photolab' ),
-				'section'  => 'blog_settings',
-				'settings' => 'bs[columns]',
-				'type'     => 'text'
-			) 
-		);
-
+		
 		$wp_customize->add_control( 
 			'columns', 
 			array(
@@ -987,6 +952,75 @@ if(!function_exists('photolab_add_customizer')) {
 					'2' => __( '2', 'photolab' ),
 					'3' => __( '3', 'photolab' ),
 				),
+			) 
+		);	
+
+		// ==============================================================
+		// Typography settings
+		// ==============================================================
+		$wp_customize->add_section( 
+			'typography_settings', array(
+				'title'    => __( 'Typography settings', 'photolab' ),
+				'priority' => 100
+			)
+		);
+
+		$wp_customize->add_setting( 
+			'typography[heading_font_family]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'typography_heading_font_family', 
+			array(
+				'label'       => __( 'Heading font family', 'photolab' ),
+				'section'     => 'typography_settings',
+				'settings'    => 'typography[heading_font_family]',
+				'type'        => 'select',
+				'choices'     => TypographySettingsModel::getFontsOption(),
+			) 
+		);
+
+		$wp_customize->add_setting( 
+			'typography[base_font_family]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'typography_base_font_family', 
+			array(
+				'label'       => __( 'Base font family', 'photolab' ),
+				'section'     => 'typography_settings',
+				'settings'    => 'typography[base_font_family]',
+				'type'        => 'select',
+				'choices'     => TypographySettingsModel::getFontsOption(),
+			) 
+		);
+
+		$wp_customize->add_setting( 
+			'typography[base_font_size]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			'typography_base_font_size', 
+			array(
+				'label'    => __( 'Base font size', 'photolab' ),
+				'section'  => 'typography_settings',
+				'settings' => 'typography[base_font_size]',
+				'type'     => 'text'
 			) 
 		);
 	}
@@ -1025,4 +1059,13 @@ function photolab_sanitize_checkbox( $input ) {
 
 	return $input;
 
+}
+
+/**
+ * Sanitize content for allowed HTML tags for post content.
+ * @param  string $input --- content
+ * @return string --- sanitized content
+ */
+function sanitize_html( $input ){
+	return wp_kses_post( $input );
 }

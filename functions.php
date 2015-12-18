@@ -251,6 +251,7 @@ require_once get_template_directory() . '/inc/models/menu_settings.php';
 require_once get_template_directory() . '/inc/models/colors.php';
 require_once get_template_directory() . '/inc/models/blog_settings.php';
 require_once get_template_directory() . '/inc/models/footer_settings.php';
+require_once get_template_directory() . '/inc/models/typography_settings.php';
 /**
  * Widgets
  */
