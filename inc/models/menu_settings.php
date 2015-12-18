@@ -30,6 +30,15 @@ class MenuSettingsModel extends OptionsModel{
 	}
 
 	/**
+	 * Get enable/disable flag search box
+	 * @return boolean --- enabled or disabled
+	 */
+	public static function getSearchBox()
+	{
+		return (bool) self::getOption('search_box');
+	}
+
+	/**
 	 * Get disclimer text HTML code
 	 * @return string --- disclimer text HTML code
 	 */

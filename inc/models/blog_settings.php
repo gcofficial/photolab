@@ -33,7 +33,24 @@ class BlogSettingsModel extends OptionsModel{
 	 */
 	public static function getLayoutStyle()
 	{
-		return self::getOption('layout_style');
+		$allowed_styles = self::getAllowedStyles();
+		$style 			= (string) self::getOption('layout_style');
+		if(in_array($style, $allowed_styles))
+			return $style;
+		return $allowed_styles[0];
+	}
+
+	/**
+	 * Get all allowed footer styles
+	 * @return array --- all allowed footer sytles
+	 */
+	public static function getAllowedStyles()
+	{
+		return array(
+			'default',
+			'grid',
+			'masonry'
+		);
 	}
 
 	/**

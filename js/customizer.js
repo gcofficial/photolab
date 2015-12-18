@@ -16,6 +16,29 @@ function ctrlToggle($ctrl, show)
 	}
 }
 
+/**
+ * Change top menu location
+ */
+jQuery(document).on(
+	'change',
+	'#customize-control-nav_menu_locations-top select',
+	function(){
+		var val = jQuery(this).val();
+
+		ctrlToggle(
+			jQuery('#customize-control-disclimer_text'),
+			val != 0
+		);
+		ctrlToggle(
+			jQuery('#customize-control-search_box'),
+			val != 0
+		);
+	}
+);
+
+/**
+ * Change layout style
+ */
 jQuery(document).on(
 	'change',
 	'#customize-control-layout_style select',
@@ -50,6 +73,7 @@ jQuery(document).ready(
 	function(){
 		var footer_style = jQuery('#customize-control-footer_style select').val();
 		var layout_style = jQuery('#customize-control-layout_style select').val();
+		var top_menu     = jQuery('#customize-control-nav_menu_locations-top select').val();
 
 		ctrlToggle(
 			jQuery('#customize-control-footer_logo'), 
@@ -62,6 +86,14 @@ jQuery(document).ready(
 		ctrlToggle(
 			jQuery('#customize-control-columns'),
 			layout_style == 'grid' || layout_style == 'masonry'
+		);
+		ctrlToggle(
+			jQuery('#customize-control-disclimer_text'),
+			top_menu != 0
+		);
+		ctrlToggle(
+			jQuery('#customize-control-search_box'),
+			top_menu != 0
 		);
 	}
 );

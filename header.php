@@ -143,26 +143,30 @@
 <body <?php body_class(); ?>>
 <?php echo GeneralSiteSettingsModel::getPreloader(); ?>
 <div id="page" class="hfeed site">
+	<?php if(has_nav_menu('top')): ?>
 	<div class="top-menu">
-		<?php echo MenuSettingsModel::getDisclimer(); ?>
-		<?php get_search_form(); ?>		
 		<?php 
-			if(has_nav_menu('top'))
-			{
-				wp_nav_menu( 
-					array( 
-						'theme_location'  => 'top',
-						'container'       => 'nav', 
-						'container_class' => 'top-navigation', 
-						'container_id'    => 'site-navigation',
-						'menu_class'      => 'sf-top-menu', 
-						'fallback_cb'     => 'photolab_page_menu',
-						'walker'          => new PhotolabWalker()
-					) 
-				); 	
-			}
+		echo MenuSettingsModel::getDisclimer();
+		if(MenuSettingsModel::getSearchBox())
+		{
+			get_search_form(); 	
+		}
+		?>		
+		<?php 
+			wp_nav_menu( 
+				array( 
+					'theme_location'  => 'top',
+					'container'       => 'nav', 
+					'container_class' => 'top-navigation', 
+					'container_id'    => 'site-navigation',
+					'menu_class'      => 'sf-top-menu', 
+					'fallback_cb'     => 'photolab_page_menu',
+					'walker'          => new PhotolabWalker()
+				) 
+			); 	
 		?>
 	</div>
+	<?php endif; ?>
 	<?php echo MenuSettingsModel::getHeader(); ?>
 	<div class="header-image-box">
 	<?php

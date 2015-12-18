@@ -733,7 +733,6 @@ function getSidebarSideType()
 		'lr1'  => 'right',
 		'l1r1' => 'leftright',
 	);	
-
 	if(!BlogSettingsModel::isDefaultLayout())
 	{
 		$values['l1r1'] = 'left';

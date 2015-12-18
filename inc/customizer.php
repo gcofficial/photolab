@@ -556,51 +556,46 @@ if(!function_exists('photolab_add_customizer')) {
 				'std'    => '1'
 			) 
 		);
+		
+		$wp_customize->add_setting( 
+			'ms[search_box]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
 
-		// ==============================================================
-		// Show only we have menu in top location
-		// ==============================================================
-		if(has_nav_menu('top'))
-		{
-			$wp_customize->add_setting( 
-				'ms[search_box]', 
-				array(
-					'default'           => '',
-					'type'              => 'option',
-					'sanitize_callback' => 'sanitize_text_field'
-				) 
-			);
+		$wp_customize->add_control( 
+			'search_box', 
+			array(
+				'label'    => __( 'Enable/Disable search box', 'photolab' ),
+				'section'  => 'menu_settings',
+				'settings' => 'ms[search_box]',
+				'type'     => 'checkbox',
+				'std'    => '1'
+			) 
+		);
 
-			$wp_customize->add_control( 
-				'search_box', 
-				array(
-					'label'    => __( 'Enable/Disable search box', 'photolab' ),
-					'section'  => 'menu_settings',
-					'settings' => 'ms[search_box]',
-					'type'     => 'checkbox',
-					'std'    => '1'
-				) 
-			);
+		$wp_customize->add_setting( 
+			'ms[disclimer_text]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_html'
+			) 
+		);
 
-			$wp_customize->add_setting( 
-				'ms[disclimer_text]', 
-				array(
-					'default'           => '',
-					'type'              => 'option',
-					'sanitize_callback' => 'sanitize_html'
-				) 
-			);
+		$wp_customize->add_control( 
+			'disclimer_text', 
+			array(
+				'label'    => __( 'Disclaimer text', 'photolab' ),
+				'section'  => 'menu_settings',
+				'settings' => 'ms[disclimer_text]',
+				'type'     => 'textarea'
+			) 
+		);	
 
-			$wp_customize->add_control( 
-				'disclimer_text', 
-				array(
-					'label'    => __( 'Disclaimer text', 'photolab' ),
-					'section'  => 'menu_settings',
-					'settings' => 'ms[disclimer_text]',
-					'type'     => 'textarea'
-				) 
-			);	
-		}
 		
 
 		$wp_customize->add_setting( 

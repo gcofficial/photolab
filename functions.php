@@ -278,25 +278,29 @@ require_once get_template_directory() . '/inc/post_types/accordion_items.php';
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function photolab_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'photolab' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Allowed only on static pages', 'photolab' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
+	register_sidebar( 
+		array(
+			'name'          => __( 'Sidebar', 'photolab' ),
+			'id'            => 'sidebar-1',
+			'description'   => __( 'Allowed only on static pages', 'photolab' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) 
+	);
 
-	register_sidebar( array(
-		'name'          => __( 'Sidebar second', 'photolab' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Allowed only on static pages', 'photolab' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
+	register_sidebar( 
+		array(
+			'name'          => __( 'Sidebar second', 'photolab' ),
+			'id'            => 'sidebar-2',
+			'description'   => __( 'Allowed only on static pages', 'photolab' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		) 
+	);
 
 	register_sidebar( 
 		array(
