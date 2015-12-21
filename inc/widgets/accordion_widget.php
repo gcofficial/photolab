@@ -1,6 +1,6 @@
 <?php
 
-add_action('widgets_init', array(AccordionWidget, 'register'));
+add_action('widgets_init', array('AccordionWidget', 'register'));
 
 class AccordionWidget extends WP_Widget{
 
@@ -43,27 +43,19 @@ class AccordionWidget extends WP_Widget{
 	}
 
 	/**
-	 * Get number posts from saved options
-	 * @param  mixed $number_posts --- potential number posts
-	 * @return integer --- number posts
-	 */
-	public function getNumberPosts($number_posts)
-	{
-		$number_posts = (int) $number_posts;
-		return $number_posts > 0 ? $number_posts : 1;
-	}
-
-	/**
 	 * Get posts with thumbnails
-	 * @param  integer $number_posts --- number posts
+	 * @param  $post_ids - include post ids
+	 * @param  $category - category id
 	 * @return array --- posts with thumbnails $post->image
 	 */
-	public function getPosts($number_posts = 1)
+	public function getPosts($post_ids, $category)
 	{
 		return get_posts( 
 			array(
-				'numberposts'     => $number_posts,
-				'post_type'       => 'accordion_item',
+				'numberposts'     => -1,
+				'include'         => $post_ids,
+				'category'        => $category,
+				'post_type'       => 'post',
 				'post_status'     => 'publish'
 			) 
 		);
@@ -79,7 +71,10 @@ class AccordionWidget extends WP_Widget{
 	 */
 	public function widget( $args, $instance ) 
 	{
-		$posts = $this->getPosts($this->getNumberPosts($instance['number_posts']));
+		$posts = $this->getPosts(
+			Tools::tryGet('post_ids', $instance),
+			Tools::tryGet('category', $instance)
+		);
 
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) 
@@ -102,8 +97,9 @@ class AccordionWidget extends WP_Widget{
 			'accordion_widget',
 			array(
 				'obj'          => $this,
-				'title'        => $instance['title'],
-				'number_posts' => $instance['number_posts'],
+				'title'        => Tools::tryGet('title', $instance),
+				'post_ids'     => Tools::tryGet('post_ids', $instance),
+				'category'     => Tools::tryGet('category', $instance),
 			)
 		);
 	}
@@ -120,9 +116,10 @@ class AccordionWidget extends WP_Widget{
 	 */
 	public function update( $new_instance, $old_instance ) 
 	{
-		$instance                 = array();
-		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['number_posts'] = (int) $new_instance['number_posts'];
+		$instance             = array();
+		$instance['title']    = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['post_ids'] = esc_attr( $new_instance['post_ids'] );
+		$instance['category'] = esc_attr( $new_instance['category'] );
 
 		return $instance;
 	}

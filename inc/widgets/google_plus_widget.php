@@ -1,6 +1,6 @@
 <?php
 
-add_action('widgets_init', array(GooglePlusWidget, 'register'));
+add_action('widgets_init', array('GooglePlusWidget', 'register'));
 
 class GooglePlusWidget extends WP_Widget{
 
@@ -56,8 +56,8 @@ class GooglePlusWidget extends WP_Widget{
 			'google_plus_widget',
 			array(
 				'obj'     => $this,
-				'title'   => $instance['title'],
-				'page_id' => $instance['page_id'],
+				'title'   => Tools::tryGet('title', $instance),
+				'page_id' => Tools::tryGet('page_id', $instance),
 			)
 		);
 	}

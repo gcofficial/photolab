@@ -1,4 +1,5 @@
 <?php
+add_theme_support( "title-tag" );
 /**
  * photolab functions and definitions
  *
@@ -104,7 +105,7 @@ function photolab_assets() {
 	// Also enqueue Font Awesome for social icons, they are enabelrd in options
 	$options = get_option( 'photolab' );
 	
-	wp_enqueue_style( 'photolab-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
+	wp_enqueue_style( 'photolab-font-awesome', get_template_directory_uri(). '/css/font-awesome-4.5.0/css/font-awesome.min.css' );
 
 	// Script
 	wp_enqueue_script( 'photolab-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
@@ -265,11 +266,6 @@ require_once get_template_directory() . '/inc/widgets/advertisement_widget.php';
  * Meta Boxes
  */
 require_once get_template_directory() . '/inc/metaboxes/social_post_types.php';
-
-/**
- * Post Types
- */
-require_once get_template_directory() . '/inc/post_types/accordion_items.php';
 
 /**
  * Register widget area.

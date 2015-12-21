@@ -16,5 +16,8 @@ abstract class OptionsModel{
 	 * Get all options
 	 * @return array --- all options
 	 */
-	abstract public static function getAll();
+	public static function getAll()
+	{
+		die('It must be ovverided!');
+	}
 }

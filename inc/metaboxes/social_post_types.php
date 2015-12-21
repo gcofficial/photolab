@@ -11,8 +11,8 @@ class SocialPostTypes{
 	{
 		if ( is_admin() ) 
 		{
-			add_action( 'load-post.php', array(SocialPostTypes, 'getNewClass') );
-			add_action( 'load-post-new.php', array(SocialPostTypes, 'getNewClass') );
+			add_action( 'load-post.php', array('SocialPostTypes', 'getNewClass') );
+			add_action( 'load-post-new.php', array('SocialPostTypes', 'getNewClass') );
 		}
 	}
 

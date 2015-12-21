@@ -99,7 +99,6 @@ class Tools{
      */
     public static function renderSelectControl($values, $attributes = array())
     {
-        if(trim($id) == '') $id = $name;
         return self::renderView(
             'select_control', 
             array(

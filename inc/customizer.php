@@ -487,7 +487,7 @@ if(!function_exists('photolab_add_customizer')) {
 		$wp_customize->add_control( 
 			'blogname', 
 			array(
-				'label'      => __( 'Site Title' ),
+				'label'      => __( 'Site Title', 'photolab' ),
 				'section'    => 'general_site_settings',
 			) 
 		);
@@ -495,7 +495,7 @@ if(!function_exists('photolab_add_customizer')) {
 		$wp_customize->add_control( 
 			'blogdescription', 
 			array(
-				'label'      => __( 'Tagline' ),
+				'label'      => __( 'Tagline', 'photolab' ),
 				'section'    => 'general_site_settings',
 			) 
 		);

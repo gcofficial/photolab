@@ -1,6 +1,6 @@
 <?php
 
-add_action('widgets_init', array(InstagramWidget, 'register'));
+add_action('widgets_init', array('InstagramWidget', 'register'));
 
 class InstagramWidget extends WP_Widget{
 
@@ -31,6 +31,7 @@ class InstagramWidget extends WP_Widget{
 	 */
 	public function getUserID($user_name, $client_id = '1515b124cf42481db64cacfb96132345')
 	{
+		global $wp_filesystem;
 		$user_name = trim($user_name);
 		$client_id = trim($client_id);
 
@@ -41,7 +42,7 @@ class InstagramWidget extends WP_Widget{
 			$user_name, 
 			$client_id
 		);
-		$request = (array) json_decode(@file_get_contents($query), true);
+		$request = (array) json_decode($wp_filesystem->get_contents($query), true);
 		
 		if(array_key_exists('data', $request))
 		{
@@ -60,6 +61,7 @@ class InstagramWidget extends WP_Widget{
 	 */
 	public function getPostsWithImages($id = '189003872', $client_id = '1515b124cf42481db64cacfb96132345', $number_posts = 1)
 	{
+		global $wp_filesystem;
 		if($id == 0) return array();
 		$query   = sprintf(
 			'https://api.instagram.com/v1/users/%s/media/recent/?client_id=%s&count=%d',
@@ -68,7 +70,7 @@ class InstagramWidget extends WP_Widget{
 			$number_posts
 		);
 
-		$request = @file_get_contents($query);
+		$request = $wp_filesystem->get_contents($query);
 
 		return json_decode($request, true);
 	}
@@ -103,7 +105,10 @@ class InstagramWidget extends WP_Widget{
 		{
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
-		echo Tools::renderView('instagram_list', array('images' => $images));
+		echo Tools::renderView(
+			'instagram_list', 
+			array('images' => $images)
+		);
 		echo $args['after_widget'];
 	}
 
@@ -115,29 +120,16 @@ class InstagramWidget extends WP_Widget{
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title        = $instance['title'];
-		$user         = $instance['user'];
-		$number_posts = $instance['number_posts'];
-		$client_id    = $instance['client_id'];
-
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'photolab' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'user' ); ?>"><?php _e( 'User name:', 'photolab' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'user' ); ?>" name="<?php echo $this->get_field_name( 'user' ); ?>" type="text" value="<?php echo esc_attr( $user ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'number_posts' ); ?>"><?php _e( 'Number posts:', 'photolab' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'number_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_posts' ); ?>" type="text" value="<?php echo esc_attr( $number_posts ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'client_id' ); ?>"><?php _e( 'Client id:', 'photolab' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'client_id' ); ?>" name="<?php echo $this->get_field_name( 'client_id' ); ?>" type="text" value="<?php echo esc_attr( $client_id ); ?>">
-		</p>
-		<?php 
+		echo Tools::renderView(
+			'instagram_widget',
+			array(
+				'obj'          => $this,
+				'title'        => Tools::tryGet('title', $instance),
+				'user'         => Tools::tryGet('user', $instance),
+				'number_posts' => Tools::tryGet('number_posts', $instance),
+				'client_id'    => Tools::tryGet('client_id', $instance),
+			)
+		);
 	}
 
 	/**

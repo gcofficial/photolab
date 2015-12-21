@@ -1,6 +1,6 @@
 <?php
 
-add_action('widgets_init', array(AdvertisementWidget, 'register'));
+add_action('widgets_init', array('AdvertisementWidget', 'register'));
 
 class AdvertisementWidget extends WP_Widget{
 
@@ -98,7 +98,7 @@ class AdvertisementWidget extends WP_Widget{
 			'advertisement_widget', 
 			array(
 				'obj'   => $this,
-				'title' => Tools::tryGet('title', $instance, __('Widget Image')),
+				'title' => Tools::tryGet('title', $instance, __('Widget Image', 'photolab')),
 				'image' => Tools::tryGet('image', $instance, '')
 			)
 		);

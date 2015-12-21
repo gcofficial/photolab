@@ -1,4 +1,4 @@
-<?php if(is_array($images['data']) && count($images['data']) > 0): ?>
+<?php if(array_key_exists('data', $images) && is_array($images['data']) && count($images['data']) > 0): ?>
 	<ul class="instagram-images">
 		<?php foreach ($images['data'] as $image): ?>
 			<li>
