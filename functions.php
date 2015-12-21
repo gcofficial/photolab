@@ -268,6 +268,11 @@ require_once get_template_directory() . '/inc/widgets/advertisement_widget.php';
 require_once get_template_directory() . '/inc/metaboxes/social_post_types.php';
 
 /**
+ * Theme pages
+ */
+require_once get_template_directory() . '/inc/pages/upgrade_to_pro.php';
+
+/**
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
