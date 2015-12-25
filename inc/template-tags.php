@@ -724,8 +724,8 @@ function getSidebarSideType()
 {
 	$key   = sprintf(
 		'l%sr%s', 
-		get_option('sidebar_mode_left'), 
-		get_option('sidebar_mode_right')
+		SidebarSettingsModel::getModeLeft(),
+		SidebarSettingsModel::getModeRight()
 	);
 	$values = array(
 		'lr'   => 'hide',

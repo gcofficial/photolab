@@ -252,6 +252,7 @@ require_once get_template_directory() . '/inc/models/header_settings.php';
 require_once get_template_directory() . '/inc/models/blog_settings.php';
 require_once get_template_directory() . '/inc/models/footer_settings.php';
 require_once get_template_directory() . '/inc/models/typography_settings.php';
+require_once get_template_directory() . '/inc/models/sidebar_settings.php';
 /**
  * Widgets
  */
@@ -271,6 +272,11 @@ require_once get_template_directory() . '/inc/metaboxes/social_post_types.php';
  * Theme pages
  */
 require_once get_template_directory() . '/inc/pages/upgrade_to_pro.php';
+
+/**
+ * Customizer
+ */
+require_once get_template_directory() . '/inc/customizer/sidebar_creator.php';
 
 /**
  * Register widget area.
@@ -313,6 +319,15 @@ function photolab_widgets_init() {
 			'after_title'   => '</h3>',
 		) 
 	);
+
+	$sidebar_creator = SidebarSettingsModel::getSidebarsOptions();
+	if(count($sidebar_creator))
+	{
+		foreach ($sidebar_creator as $sidebar) 
+		{
+			register_sidebar( $sidebar );
+		}
+	}
 }
 add_action( 'widgets_init', 'photolab_widgets_init' );
 

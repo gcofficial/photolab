@@ -35,9 +35,6 @@ function my_customize_controls_enqueue_scripts() {
 	);
 }
 
-
-
-
 /**
 * Front End Customizer
 *
@@ -302,7 +299,7 @@ if(!function_exists('photolab_add_customizer')) {
 		);
 
 		$wp_customize->add_setting( 
-			'sidebar_mode_left', 
+			'sidebar_settings[mode_left]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -311,17 +308,17 @@ if(!function_exists('photolab_add_customizer')) {
 		);
 
 		$wp_customize->add_control( 
-			'sidebar_mode_left', 
+			'sidebar_settings_mode_left', 
 			array(
 				'label'    => __( 'Show sidebar on left side', 'photolab' ),
 				'section'  => 'photolab_sidebars',
-				'settings' => 'sidebar_mode_left',
+				'settings' => 'sidebar_settings[mode_left]',
 				'type'     => 'checkbox'
 			) 
 		);
 
 		$wp_customize->add_setting( 
-			'sidebar_mode_right', 
+			'sidebar_settings[mode_right]', 
 			array(
 				'default'           => '',
 				'type'              => 'option',
@@ -330,13 +327,34 @@ if(!function_exists('photolab_add_customizer')) {
 		);
 
 		$wp_customize->add_control( 
-			'sidebar_mode_right', 
+			'sidebar_settings_mode_right', 
 			array(
 				'label'    => __( 'Show sidebar on right side', 'photolab' ),
 				'section'  => 'photolab_sidebars',
-				'settings' => 'sidebar_mode_right',
+				'settings' => 'sidebar_settings[mode_right]',
 				'type'     => 'checkbox'
 			) 
+		);
+
+		$wp_customize->add_setting( 
+			'sidebar_settings[sidebars]', 
+			array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field'
+			) 
+		);
+
+		$wp_customize->add_control( 
+			new SidebarCreator(
+				$wp_customize, 
+				'sidebar_settings_sidebar', 
+				array(
+					'label'    => __( 'Custom sidebars', 'photolab' ),
+					'section'  => 'photolab_sidebars',
+					'settings' => 'sidebar_settings[sidebars]'
+				) 
+			)
 		);
 
 		// ==============================================================
