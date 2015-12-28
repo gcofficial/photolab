@@ -267,6 +267,7 @@ require_once get_template_directory() . '/inc/widgets/advertisement_widget.php';
  * Meta Boxes
  */
 require_once get_template_directory() . '/inc/metaboxes/social_post_types.php';
+require_once get_template_directory() . '/inc/metaboxes/sidebars.php';
 
 /**
  * Theme pages

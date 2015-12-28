@@ -1,4 +1,4 @@
-<?php get_sidebar(); ?>
+<?php echo SidebarSettingsModel::loadSidebar( SidebarSettingsModel::getLeftSidebarID() ); ?>
 <div class="col-sm-6">
 <?php echo SocialPostTypes::getSocialPostCode($post); ?>
 <?php while ( have_posts() ) : the_post(); ?>
@@ -16,4 +16,4 @@
 
 <?php endwhile; // end of the loop. ?>
 </div>
-<?php get_sidebar('second'); ?>
+<?php echo SidebarSettingsModel::loadSidebar( SidebarSettingsModel::getRightSidebarID() ); ?>

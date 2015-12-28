@@ -99,11 +99,12 @@ class Tools{
      */
     public static function renderSelectControl($values, $attributes = array())
     {
+        $attributes = array_merge(array('value' => ''), $attributes);
         return self::renderView(
             'select_control', 
             array(
                 'attributes' => $attributes,
-                'values' => $values
+                'values'     => $values
             )
         );
     }

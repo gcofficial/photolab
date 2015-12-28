@@ -62,7 +62,7 @@ class SidebarSettingsModel extends OptionsModel{
 				array_push(
 					$res, 
 					array(
-						'name'          => __( $value, 'photolab' ),
+						'name'          => $value,
 						'id'            => self::getSidebarID($value),
 						'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</aside>',
@@ -83,5 +83,62 @@ class SidebarSettingsModel extends OptionsModel{
 	public static function getSidebarID($name)
 	{
 		return str_replace(' ', '_', strtolower($name));
+	}
+
+	/**
+	 * Get registered sidebars for select control
+	 * @return array --- registered sidebars
+	 */
+	public static function getSidebarsForSelect()
+	{
+		$result   = array( '' => 'Inherit' );
+		$sidebars = (array) $GLOBALS['wp_registered_sidebars'];
+		if(count($sidebars))
+		{
+			foreach ($sidebars as $sidebar) 
+			{
+				$result[$sidebar['id']] = $sidebar['name'];
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Get left sidebar id
+	 * @return string --- left sidebar id
+	 */
+	public static function getLeftSidebarID()
+	{
+		global $post;
+		$left = trim((string) get_post_meta( $post->ID, 'sidebar_left', true ));
+		if($left == '') $left = 'sidebar-1';
+		return $left;
+	}
+
+	/**
+	 * Get right sidebar id
+	 * @return string --- right sidebar id
+	 */
+	public static function getRightSidebarID()
+	{
+		global $post;
+		$right = trim((string) get_post_meta( $post->ID, 'sidebar_right', true ));
+		if($right == '') $right = 'sidebar-2';
+		return $right;
+	}
+
+	/**
+	 * Load sidebar 
+	 * @param  string $sidebar_id --- sidebar id
+	 * @return string             --- html code sidebar
+	 */
+	public static function loadSidebar($sidebar_id)
+	{
+		return Tools::renderView(
+			'sidebar',
+			array(
+				'sidebar_id' => $sidebar_id
+			)
+		);
 	}
 }
