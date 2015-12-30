@@ -1,3 +1,3 @@
-<?php if(!empty(trim($copyright))): ?>
+<?php if(trim($copyright) != ''): ?>
 <span class="copyright"><?php echo $copyright; ?></span>
 <?php endif; ?>
