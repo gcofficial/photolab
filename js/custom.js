@@ -207,7 +207,7 @@ function getWindowHeight() {
 
     // dropdown menu and mobile navigation
     jQuery(document).ready(function($) {
-        $('ul.sf-menu').superfish();
+        $('ul.sf-menu, ul.sf-top-menu, ul.sf-footer-menu').superfish();
 
         var ismobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
         if(ismobile){
