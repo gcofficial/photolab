@@ -103,8 +103,11 @@
 	body .btn.btn-animated:hover:before {
 		background: <?php echo GeneralSiteSettingsModel::getColorScheme() ?>;
 	}
-	body .container{
-		width: <?php echo GeneralSiteSettingsModel::getMaxContainerSize(); ?>px;
+
+	@media (min-width: 1199px) {
+		body .container{
+			width: <?php echo GeneralSiteSettingsModel::getMaxContainerSize(); ?>px;
+		}
 	}
 
 	body h1{

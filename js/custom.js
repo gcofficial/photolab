@@ -211,10 +211,12 @@ function getWindowHeight() {
 
         var ismobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
         if(ismobile){
-            jQuery('.main-navigation > ul').sftouchscreen();
+            jQuery('.main-navigation > ul, ul.sf-top-menu, ul.sf-footer-menu').sftouchscreen();
         }
 
         jQuery('.main-navigation > ul').mobileMenu();
+        jQuery('ul.sf-top-menu').mobileMenu();
+        jQuery('ul.sf-footer-menu').mobileMenu();
     });
 
 })(jQuery);
