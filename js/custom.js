@@ -207,7 +207,7 @@ function getWindowHeight() {
 
     // dropdown menu and mobile navigation
     jQuery(document).ready(function($) {
-        $('ul.sf-menu, ul.sf-top-menu, ul.sf-footer-menu').superfish();
+        $('ul.sf-menu, ul.sf-footer-menu').superfish();
 
         var ismobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
         if(ismobile){
@@ -215,8 +215,56 @@ function getWindowHeight() {
         }
 
         jQuery('.main-navigation > ul').mobileMenu();
-        jQuery('ul.sf-top-menu').mobileMenu();
         jQuery('ul.sf-footer-menu').mobileMenu();
+
+
+
+        // start top menu code
+            var sf, body;
+            body = $('body');
+            var breakpoint = 750;
+            sf = $('ul.sf-top-menu');
+            if(body.width() >= breakpoint) {
+              // enable superfish when the page first loads if we're on desktop
+              sf.superfish();
+            }
+            $(window).resize(function() {
+console.log("$(window).width() = " + $(window).width());
+console.log("$(document).width() = " + $(document).width());
+                if($(window).width() >= breakpoint && !sf.hasClass('sf-js-enabled')) {
+                    // you only want SuperFish to be re-enabled once (sf.hasClass)
+                    sf.superfish('init');
+                    // hide menu when resize window
+                    $(".sf-top-menu").css( "display", "block" );
+                } else if(body.width() < breakpoint) {
+                    // smaller screen, disable SuperFish
+                    sf.superfish('destroy');
+                    // hide menu when resize window
+                    $(".sf-top-menu").css( "display", "none" );
+                }
+            });
+
+            /* prepend top menu icon */
+            $('.top-navigation').prepend('<div id="top-menu-icon"></div>');
+             
+            /* toggle nav */
+            $("#top-menu-icon").on("click", function(e){
+                $(".sf-top-menu").slideToggle();
+                $(this).toggleClass("active");
+                 e.stopPropagation();
+            });
+
+             $(document).on('click', function(){
+                if ($("#top-menu-icon").hasClass("active") && body.width() <= breakpoint) {
+                    $(".sf-top-menu").slideUp("slow");
+                    $("#top-menu-icon").removeClass("active");
+                }
+            });
+
+        // end top menu code
+
+
+
     });
 
 })(jQuery);
