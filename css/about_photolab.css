@@ -3,6 +3,7 @@
 * @description  This section holds some of style declarations for necessary
 *               scripts
 */
+/*@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600,700);*/
 /*
 * @section      Normalize
 *
@@ -29,7 +30,7 @@ time, mark, audio, video, button, input, textarea {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
+  /*font: inherit;*/
   vertical-align: top;
 }
 
@@ -279,7 +280,6 @@ body {
   font-size: 13px;
   line-height: 20px;
   position: relative;
-  border-top: 20px solid #24282c;
   text-align: center;
   /*
   * @subsection   table-1
@@ -290,21 +290,6 @@ body {
     padding-left: 10px;
     padding-right: 10px;
   }
-}
-.promo-main:before, .promo-main:after {
-  position: absolute;
-  display: inline-block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  left: 0;
-  top: 0;
-  background: #fff;
-}
-.promo-main:after {
-  height: 0px;
-  top: 2px;
-  background: #e0e0e0;
 }
 .promo-main p {
   line-height: 15px;
