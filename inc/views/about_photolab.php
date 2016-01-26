@@ -18,35 +18,35 @@
                         <h2>Welcome to PhotoLab Lite!</h2>
                         <p>PhotoLab WordPress theme is the first 100% GPL TemplateMonster template.<br>The theme is fully compatible with WordPress Customizer and you will be able to manage any part of the template within a few clicks.
                         <br><br>
-                        <a href="#">WordPress themes overview</a>
+                        <a href="<?php echo admin_url( 'themes.php' ); ?>">WordPress themes overview</a>
                         </p>
-                        <a href="#" class="btn-promo">Go to Customizer</a>
+                        <a href="<?php echo admin_url( 'customize.php' ); ?>" class="btn-promo">Go to Customizer</a>
                         <hr>
                         <div class="promo-cols">
                             <div class="promo-col1">
                                 <p>
                                     Create a Child Theme
                                     <br>
-                                    <a href="#">Read more</a>
+                                    <a href="https://codex.wordpress.org/Child_Themes">Read more</a>
                                 </p>
                                 <hr>
                                 <p>
                                     FAQs
                                     <br>
-                                    <a href="#">Read more</a>
+                                    <a href="http://www.templatemonster.com/help/wordpress-theme.html">Read more</a>
                                 </p>
                             </div>
                             <div class="promo-col1">
                                 <p>
                                     Speed up your Website
                                     <br>
-                                    <a href="#">Read more</a>
+                                    <a href="https://codex.wordpress.org/WordPress_Optimization">Read more</a>
                                 </p>
                                 <hr>
                                 <p>
                                     Video Tutorials
                                     <br>
-                                    <a href="#">Read more</a>
+                                    <a href="http://www.templatemonster.com/help/cms-blog-templates/wordpress/wordpress-tutorials/">Read more</a>
                                 </p>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 <td><span class="included"></span></td>
                             </tr>
                         </table>
-                        <a href="#" class="btn-promo">Buy Now</a>
+                        <a href="http://www.templatemonster.com/" class="btn-promo">Buy Now</a>
                         <hr>
                     </div>
                     <!-- END Tab Content 2 -->
