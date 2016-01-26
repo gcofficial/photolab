@@ -1,0 +1,238 @@
+/*
+* @section      Extensions
+* @description  This section holds some of style declarations for necessary
+*               scripts
+*/
+
+@import "_normalize.scss";
+@import "extensions/_responsive-tabs.scss";
+
+body{
+  padding: 0;
+  margin: 0;
+  background: #f0f0f0;
+}
+
+.promo-main {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  line-height: 20px;
+  position: relative;
+  border-top: 20px solid #24282c;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:before, &:after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: 0;
+    background: #fff;
+  }
+  &:after {
+    height: 0px;
+    top: 2px;
+    background: #e0e0e0;
+  }
+
+  p {
+    line-height: 15px;
+  }
+
+  h2 {
+    font-weight: 600;
+    color: #24282c;
+    font-size: 24px;
+    line-height: 30px;
+    @media (min-width: 767px) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  h3 {
+    font-size: 17px;
+    line-height: 26px;
+    font-weight: 700;
+  }
+
+  a {
+    font-weight: 700;
+    color: #2574a7;
+    text-decoration: underline;
+    transition: .4s all ease;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  hr {
+    width: 100%;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    background: #ddd;
+    border: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    outline: none;
+    overflow: hidden;
+  }
+
+  .promo-cols {
+    padding: 58px 0 58px;
+    overflow: hidden;
+    font-weight: 700;
+
+    .promo-col1 {
+      position: relative;
+      width: 50%;
+      float: left;
+      text-align: right;
+      padding-right: 20px;
+
+      & + .promo-col1 {
+        position: relative;
+        text-align: left;
+        padding-right: 0;
+        padding-left: 20px;
+
+        :before {
+          position: absolute;
+          display: inline-block;
+          content: '';
+          width: 1px;
+          height: 173px;
+          left: 0;
+          top: -27px;
+          background: #dddddd;
+        }
+
+      }
+    }
+
+  }
+
+  
+
+  .btn-promo + hr {margin-top: 30px;}
+  hr + hr {margin-top: 30px;}
+  h2 + p {margin-top: 11px;}
+  p + .btn-promo {margin-top: 19px;}
+  p + hr {margin-top: 28px;}
+  hr + p {margin-top: 28px;}
+  hr + h2 {margin-top: 22px;}
+  h2 + img {margin-top: 22px;}
+  img + p {margin-top: 26px;}
+  .table-1 + .btn-promo {margin-top: 30px;}
+  h3 + p {
+    margin-top: 3px;
+    @media (min-width: 800px) {margin-top: 14px;}
+  }
+
+  .btn-promo {
+    display: inline-block;
+    background: #2e85b6;
+    color: #fff;
+    font-weight: 400;
+    border: 1px solid #216896;
+    border-bottom-width: 2px;
+    text-decoration: none;
+    padding: 3px 10px;
+    border-radius: 3px;
+    min-width: 128px;
+
+    &:hover {
+      color: #73cbfd;
+      background: #216896;
+      border-color: #014165;
+    }
+  }
+
+  .img1 {
+    border: 1px solid #dfdfdf;
+  }
+
+
+  /*
+  * @subsection   table-1
+  */
+  .table-1 {
+    width: 100%;
+    vertical-align: middle;
+    text-align: left;
+    margin-top: -18px;
+
+    tr {
+      transition: .4s all ease;
+      border-bottom: 1px solid #ddd;
+      & + tr {
+        
+      }
+
+      &:hover {background: #efefef;}
+      &.table-header:hover {background: none;}
+
+    }
+
+    th {
+      font-weight: 700;
+    }
+
+    .not-included, .included {
+      display: inline-block;
+      width: 30px;
+      height: 26px;
+      background: url(../images/not_included.png) 50% 0 no-repeat;
+      margin-top: 4px;
+    }
+    .included {
+      background: url(../images/included.png) 100% 0 no-repeat;
+      margin-left: 4px;
+    }
+
+
+    th, td {
+      vertical-align: middle;
+      padding: 7px 5px;
+      min-width: 40px;
+    }
+    td {
+
+      min-height: 10px;
+      padding: 12px 5px;
+      @media (min-width: 800px) {padding: 43px 19px 47px 26px;}
+    }
+    th {
+      padding: 0;
+      padding-bottom: 30px;
+      text-align: center;
+    }
+  }
+
+
+  .promo {
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 14px;
+    margin-bottom: 14px;
+
+    .resp-tabs-container {
+      border: 1px solid #e2e2e2;
+      border-top: none;
+      background: #fff;
+      padding: 47px 30px 28px;
+    }
+
+  }
+
+
+}

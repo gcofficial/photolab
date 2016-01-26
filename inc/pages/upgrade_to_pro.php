@@ -19,7 +19,7 @@ class UpgradeToPro{
 			__('About Photolab', 'photolab'), 
 			__('About Photolab', 'photolab'), 
 			'edit_theme_options', 
-			'welcome.php', 
+			'about_photolab', 
 			array($this, 'render') 
 		);
 	}

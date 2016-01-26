@@ -1,0 +1,497 @@
+/*
+* @section      Extensions
+* @description  This section holds some of style declarations for necessary
+*               scripts
+*/
+/*
+* @section      Normalize
+*
+* @description  Resets default browser styling
+*
+* @link         http://github.com/necolas/normalize.css
+* @license      MIT license - http://opensource.org/licenses/MIT
+* @version      3.0.3
+* @revision     1.0
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, button, input, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: top;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, main, time, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button, input, textarea, select {
+  display: inline-block;
+  -webkit-appearance: none;
+  outline: none;
+  color: inherit;
+  overflow: visible;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+  cursor: pointer;
+}
+
+/*
+* @bugfix input text-overflow padding ignore
+* @affected lt IE11
+*/
+.lt-ie11 input {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom-left-radius: 1px !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a,
+a[href^="tel:"],
+a[href^="callto:"] {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+a:focus,
+a[href^="tel:"]:focus,
+a[href^="callto:"]:focus {
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a, button, input {
+  transition: .3s all ease;
+}
+
+/*
+* @subsection   Easy Responsive Tabs
+*
+* @description  Describes style declarations for Easy Responsive Tabs extension
+*
+* @author       Samson Onna
+* @link         samson3d@gmail.com
+* @version      1.0.0
+*/
+.resp-tabs-list {
+  text-align: left;
+}
+.resp-tabs-list li {
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid rgba(100, 159, 214, 0);
+  border-bottom: none;
+  padding: 10px 29px;
+  border-radius: 4px 4px 0 0;
+  color: #2574a7;
+  transition: .3s all ease;
+}
+.resp-tabs-list li:hover, .resp-tabs-list li.resp-tab-active {
+  color: #555555;
+  background: #fff;
+  border: 1px solid #649fd6;
+  border-bottom: none;
+  box-shadow: 1px -1px #d6e0ea;
+}
+
+.resp-accordion {
+  display: none;
+}
+
+.resp-tab-content {
+  display: none;
+}
+
+.resp-tab-content-active {
+  display: block;
+}
+
+.responsive-tabs-default .resp-tabs-list {
+  display: none;
+  word-spacing: -4px;
+  margin-bottom: -1px;
+}
+.responsive-tabs-default .resp-accordion, .responsive-tabs-default .resp-tabs-list > li {
+  display: inline-block;
+  word-spacing: normal;
+  padding: 10px 20px;
+  background: #DDD;
+  border: 1px solid #CCC;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s all ease;
+}
+.responsive-tabs-default .resp-accordion:hover, .responsive-tabs-default .resp-accordion.resp-tab-active, .responsive-tabs-default .resp-tabs-list > li:hover, .responsive-tabs-default .resp-tabs-list > li.resp-tab-active {
+  color: #333;
+  background: #FFF;
+}
+.responsive-tabs-default .resp-accordion.resp-tab-active, .responsive-tabs-default .resp-tabs-list > li.resp-tab-active {
+  border-bottom-color: transparent;
+}
+.responsive-tabs-default .resp-accordion {
+  display: block;
+  border-radius: 0;
+}
+.responsive-tabs-default .resp-tab-content {
+  display: none;
+  padding: 20px;
+  background: #DDD;
+  border: 1px solid #CCC;
+  color: #333;
+  background: #FFF;
+}
+
+.responsive-tabs-variant-2 {
+  overflow: hidden;
+}
+.responsive-tabs-variant-2 .resp-tabs-list {
+  display: none;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li {
+  position: relative;
+  display: inline-block;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li.resp-tab-active:before, .responsive-tabs-variant-2 .resp-tabs-list > li.resp-tab-active:after {
+  display: block;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li.resp-tab-active > .btn {
+  border-bottom-color: transparent;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li.resp-tab-active > .btn:hover {
+  color: inherit;
+  background: transparent;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li > .btn {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: none;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li > .btn:hover {
+  transition: .3s all ease;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li:before, .responsive-tabs-variant-2 .resp-tabs-list > li:after {
+  content: '';
+  display: none;
+  position: absolute;
+  width: 5000px;
+  border-bottom: 2px solid;
+  bottom: 0;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li:before {
+  right: 100%;
+  margin-right: -2px;
+}
+.responsive-tabs-variant-2 .resp-tabs-list > li:after {
+  left: 100%;
+  margin-left: -2px;
+}
+.responsive-tabs-variant-2 .btn-default {
+  color: #fff;
+}
+.responsive-tabs-variant-2 .btn-default:hover {
+  color: #333333;
+}
+.responsive-tabs-variant-2 .resp-accordion {
+  display: block;
+}
+.responsive-tabs-variant-2 .resp-accordion.resp-tab-active .btn-default {
+  background: #ebebeb;
+  color: #333333;
+}
+.responsive-tabs-variant-2 .resp-accordion > .btn {
+  display: block;
+}
+.responsive-tabs-variant-2 .resp-tab-content {
+  display: none;
+  padding-top: 50px;
+}
+.responsive-tabs-variant-2 .resp-tab-content + .resp-accordion {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .responsive-tabs:not(.resp-easy-accordion) .resp-accordion {
+    display: none;
+  }
+  .responsive-tabs:not(.resp-easy-accordion) .resp-tabs-list {
+    display: block;
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #f0f0f0;
+}
+
+.promo-main {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  line-height: 20px;
+  position: relative;
+  border-top: 20px solid #24282c;
+  text-align: center;
+  /*
+  * @subsection   table-1
+  */
+}
+@media (max-width: 900px) {
+  .promo-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+.promo-main:before, .promo-main:after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  left: 0;
+  top: 0;
+  background: #fff;
+}
+.promo-main:after {
+  height: 0px;
+  top: 2px;
+  background: #e0e0e0;
+}
+.promo-main p {
+  line-height: 15px;
+}
+.promo-main h2 {
+  font-weight: 600;
+  color: #24282c;
+  font-size: 24px;
+  line-height: 30px;
+}
+@media (min-width: 767px) {
+  .promo-main h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+.promo-main h3 {
+  font-size: 17px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.promo-main a {
+  font-weight: 700;
+  color: #2574a7;
+  text-decoration: underline;
+  transition: .4s all ease;
+}
+.promo-main a:hover {
+  color: #000;
+}
+.promo-main hr {
+  width: 100%;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  background: #ddd;
+  border: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+  outline: none;
+  overflow: hidden;
+}
+.promo-main .promo-cols {
+  padding: 58px 0 58px;
+  overflow: hidden;
+  font-weight: 700;
+}
+.promo-main .promo-cols .promo-col1 {
+  position: relative;
+  width: 50%;
+  float: left;
+  text-align: right;
+  padding-right: 20px;
+}
+.promo-main .promo-cols .promo-col1 + .promo-col1 {
+  position: relative;
+  text-align: left;
+  padding-right: 0;
+  padding-left: 20px;
+}
+.promo-main .promo-cols .promo-col1 + .promo-col1 :before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 1px;
+  height: 173px;
+  left: 0;
+  top: -27px;
+  background: #dddddd;
+}
+.promo-main .btn-promo + hr {
+  margin-top: 30px;
+}
+.promo-main hr + hr {
+  margin-top: 30px;
+}
+.promo-main h2 + p {
+  margin-top: 11px;
+}
+.promo-main p + .btn-promo {
+  margin-top: 19px;
+}
+.promo-main p + hr {
+  margin-top: 28px;
+}
+.promo-main hr + p {
+  margin-top: 28px;
+}
+.promo-main hr + h2 {
+  margin-top: 22px;
+}
+.promo-main h2 + img {
+  margin-top: 22px;
+}
+.promo-main img + p {
+  margin-top: 26px;
+}
+.promo-main .table-1 + .btn-promo {
+  margin-top: 30px;
+}
+.promo-main h3 + p {
+  margin-top: 3px;
+}
+@media (min-width: 800px) {
+  .promo-main h3 + p {
+    margin-top: 14px;
+  }
+}
+.promo-main .btn-promo {
+  display: inline-block;
+  background: #2e85b6;
+  color: #fff;
+  font-weight: 400;
+  border: 1px solid #216896;
+  border-bottom-width: 2px;
+  text-decoration: none;
+  padding: 3px 10px;
+  border-radius: 3px;
+  min-width: 128px;
+}
+.promo-main .btn-promo:hover {
+  color: #73cbfd;
+  background: #216896;
+  border-color: #014165;
+}
+.promo-main .img1 {
+  border: 1px solid #dfdfdf;
+}
+.promo-main .table-1 {
+  width: 100%;
+  vertical-align: middle;
+  text-align: left;
+  margin-top: -18px;
+}
+.promo-main .table-1 tr {
+  transition: .4s all ease;
+  border-bottom: 1px solid #ddd;
+}
+.promo-main .table-1 tr:hover {
+  background: #efefef;
+}
+.promo-main .table-1 tr.table-header:hover {
+  background: none;
+}
+.promo-main .table-1 th {
+  font-weight: 700;
+}
+.promo-main .table-1 .not-included, .promo-main .table-1 .included {
+  display: inline-block;
+  width: 30px;
+  height: 26px;
+  background: url(../images/not_included.png) 50% 0 no-repeat;
+  margin-top: 4px;
+}
+.promo-main .table-1 .included {
+  background: url(../images/included.png) 100% 0 no-repeat;
+  margin-left: 4px;
+}
+.promo-main .table-1 th, .promo-main .table-1 td {
+  vertical-align: middle;
+  padding: 7px 5px;
+  min-width: 40px;
+}
+.promo-main .table-1 td {
+  min-height: 10px;
+  padding: 12px 5px;
+}
+@media (min-width: 800px) {
+  .promo-main .table-1 td {
+    padding: 43px 19px 47px 26px;
+  }
+}
+.promo-main .table-1 th {
+  padding: 0;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.promo-main .promo {
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.promo-main .promo .resp-tabs-container {
+  border: 1px solid #e2e2e2;
+  border-top: none;
+  background: #fff;
+  padding: 47px 30px 28px;
+}

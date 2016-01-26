@@ -133,6 +133,26 @@ function photolab_assets() {
 add_action( 'wp_enqueue_scripts', 'photolab_assets' );
 
 /**
+ * Add to wp admin script and styles
+ */
+function admin_script_and_styles( $hoot_suffix ) {
+	if ( $hoot_suffix == 'appearance_page_about_photolab' ) {
+		// ==============================================================
+		// Scripts
+		// ==============================================================
+		wp_enqueue_script( 'about-photolab-core', get_template_directory_uri().'/js/core.min.js', array(), false, true );
+		wp_enqueue_script( 'about-photolab', get_template_directory_uri().'/js/about_photolab.js', array(), false, true );
+
+		// ==============================================================
+		// Styles
+		// ==============================================================
+		wp_enqueue_style( 'about-photolab-style', get_template_directory_uri().'/css/about_photolab.css' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:400,600,700' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'admin_script_and_styles' );
+
+/**
  * Get allowed socials list
  */
 function photolab_allowed_socials() {
