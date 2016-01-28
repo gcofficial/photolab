@@ -70,35 +70,21 @@
                             <tr>
                                 <td>
                                     <h3>Support </h3>
-                                    <p>You will benefit of our full support for any issues you have with the theme.</p>
+                                    <p>You will benefit of our full support for any issues you have with the theme 24/7.</p>
                                 </td>
                                 <td><span class="not-included"></span></td>
                                 <td><span class="included"></span></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h3>Package/Subscribe sections</h3>
-                                    <p>Add pricing tables for your products and use newsletter forms to attract the clients.</p>
+                                    <h3>Premium Updates</h3>
+                                    <p>You will be able to receive Premium PhotoLab updates from TemplateMonster</p>
                                 </td>
                                 <td><span class="not-included"></span></td>
                                 <td><span class="included"></span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <h3>Package/Subscribe sections</h3>
-                                    <p>Add pricing tables for your products and use newsletter forms to attract the clients.</p>
-                                </td>
-                                <td><span class="not-included"></span></td>
-                                <td><span class="included"></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3>No credit footer link</h3>
-                                    <p>Remove “Zerif Lite powered by WordPress” copyright from the footer</p>
-                                </td>
-                                <td><span class="not-included"></span></td>
-                                <td><span class="included"></span></td>
-                            </tr>
+                            
+                            
                         </table>
                         <a href="http://www.templatemonster.com/" class="btn-promo">Buy Now</a>
                         <hr>
