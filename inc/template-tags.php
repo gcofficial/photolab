@@ -539,10 +539,16 @@ function photolab_show_pages_header( $header_image ) {
  */
 function renderTitle()
 {
+	$header_slogan = get_option( 'photolab_header_slogan' );
+	$header_slogan = trim( $header_slogan );
 	ob_start();
 	?>
 	<?php
-		if ( is_category() ) :
+		if ( '' != $header_slogan ) :
+			echo '<h1>';
+				echo $header_slogan;
+			echo '</h1>';
+		elseif ( is_category() ) :
 			echo '<h1>';
 				single_cat_title();
 			echo '</h1>';
